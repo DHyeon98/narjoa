@@ -13,10 +13,8 @@ const YO = 136;
 const DEGRAD = Math.PI / 180.0;
 
 interface Coordinates {
-  lat?: number;
-  lng?: number;
-  x?: number;
-  y?: number;
+  x: number;
+  y: number;
 }
 
 export function dfs_xy_conv(v1: number, v2: number): Coordinates {
@@ -35,7 +33,10 @@ export function dfs_xy_conv(v1: number, v2: number): Coordinates {
   let ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
   ro = (re * sf) / Math.pow(ro, sn);
 
-  let rs: Coordinates = {};
+  let rs: Coordinates = {
+    x: 0,
+    y: 0,
+  };
 
   const ra = Math.tan(Math.PI * 0.25 + v1 * DEGRAD * 0.5);
   const computedRa = (re * sf) / Math.pow(ra, sn);
