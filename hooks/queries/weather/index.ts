@@ -1,11 +1,12 @@
 import { getWeather, weatherArgumentType } from '@/apis/weather';
 import { useQuery } from '@tanstack/react-query';
 
-interface weatherType {
+export interface weatherType {
   baseDate: Date;
   baseTime: string;
   category: string;
   fcstDate: Date;
+  fcstTime: string;
   fcstValue: string;
   nx: number;
   ny: number;
