@@ -1,11 +1,10 @@
 import { getLocal } from '@/apis/local';
+import LineChart from '@/components/line-chart/line-chart';
 import { useGetWeatherQuery } from '@/hooks/queries/weather';
 import { getBaseDateTime } from '@/utils/get-base-time';
 import { dfs_xy_conv } from '@/utils/xy-conversion';
 import { use, useEffect, useState } from 'react';
 // import { Bar } from 'react-chartjs-2';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS } from 'chart.js';
 
 interface locationType {
   x: number;
@@ -43,30 +42,7 @@ export default function Home() {
       <div>
         {localValue.x} {localValue.y}
       </div>
-      <BarChart />
+      <LineChart />
     </>
   );
 }
-
-const BarChart = () => {
-  const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [
-      {
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  };
-
-  return <Line data={data} options={options} />;
-};
