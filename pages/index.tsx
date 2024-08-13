@@ -1,3 +1,4 @@
+import KakaoMap from '@/components/map';
 import WeatherCard from '@/components/weather-card/weather-card';
 import WeatherChart from '@/components/weather-chart/weather-chart';
 
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <WeatherCard />
       <WeatherChart />
+      <KakaoMap />
     </>
   );
 }

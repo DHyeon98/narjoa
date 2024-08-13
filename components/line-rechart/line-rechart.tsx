@@ -12,7 +12,7 @@ const CustomLabel: FunctionComponent<any> = (props: any) => {
   const { x, y, value } = props;
 
   return (
-    <text className="font-Pretendard" x={x} y={y} dy={20} fill={'stroke'} fontSize={16} textAnchor="middle">
+    <text className="font-Pretendard" x={x} y={y} dy={20} fontSize={16} textAnchor="middle">
       {value}도
     </text>
   );

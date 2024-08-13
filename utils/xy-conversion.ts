@@ -1,6 +1,6 @@
 // dfs_xy_conv.ts
 
-// 지구 반경(km), 격자 간격(km), 투영 위도, 경도 및 기준점 설정
+// 지구 반경(km), 격자 간격(km), 투영 latitude, longitude 및 기준점 설정
 const RE = 6371.00877;
 const GRID = 5.0;
 const SLAT1 = 30.0;
