@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <script
           type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec92c9ea4a40da8020bb06ddad0c41f7"
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}`}
         ></script>
       </Head>
       <body>
