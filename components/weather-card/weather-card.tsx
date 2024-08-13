@@ -1,17 +1,16 @@
+import { LocationType } from '@/pages';
 import { dfs_xy_conv } from '@/utils/xy-conversion';
 import { useEffect } from 'react';
 
-export default function WeatherCard() {
+interface WeatherCardType {
+  location: LocationType;
+}
+
+export default function WeatherCard({ location }: WeatherCardType) {
   useEffect(() => {
-    try {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const rs = dfs_xy_conv(position.coords.latitude, position.coords.longitude);
-        localStorage.setItem('x', String(rs.x));
-        localStorage.setItem('y', String(rs.y));
-      });
-    } catch {
-      console.log('에러');
-    }
+    const rs = dfs_xy_conv(location.lat, location.lng);
+    localStorage.setItem('x', String(rs.x));
+    localStorage.setItem('y', String(rs.y));
   }, []);
   return <div className="font-Pretendard font-bold">날씨</div>;
 }
