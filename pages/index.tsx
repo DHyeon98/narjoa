@@ -1,4 +1,4 @@
-import KakaoMap from '@/components/map';
+import KakaoMap from '@/components/kakao-map/kakao-map';
 import WeatherCard from '@/components/weather-card/weather-card';
 import WeatherChart from '@/components/weather-chart/weather-chart';
 import { useEffect, useState } from 'react';
@@ -21,7 +21,9 @@ export default function Home() {
     <>
       <WeatherCard location={location} />
       <WeatherChart />
-      <KakaoMap location={location} />
+      <section className="pt-2 h-[512px]">
+        <KakaoMap location={location} />
+      </section>
     </>
   );
 }

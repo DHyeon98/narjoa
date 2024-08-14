@@ -14,4 +14,10 @@
     src: url(/fonts/Pretendard-Medium.subset.woff2) format('woff2');
     font-weight: 500;
   }
+
+  html,
+  body,
+  #__next {
+    @apply min-h-screen;
+  }
 }

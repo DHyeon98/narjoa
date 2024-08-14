@@ -60,5 +60,9 @@ export default function KakaoMap({ location }: KakaoMapType) {
       });
     }
   }, [centerData]);
-  return <div id="map" style={{ width: '100%', height: '600px' }} />; // 높이를 100px에서 600px로 변경
+  return (
+    <div className="max-w-lg max-h-[512px] h-full">
+      <div id="map" style={{ width: '100%', height: '100%' }} />
+    </div>
+  );
 }
