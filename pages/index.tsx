@@ -10,11 +10,13 @@ export interface LocationType {
 
 export default function Home() {
   const [location, setLocation] = useState<LocationType>({ lat: 37.294855, lng: 126.922385 });
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
     });
   }, []);
+
   return (
     <>
       <WeatherCard location={location} />
