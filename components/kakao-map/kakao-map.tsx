@@ -13,28 +13,26 @@ interface KakaoMapType {
 }
 
 export default function KakaoMap({ location }: KakaoMapType) {
-  const [centerData, setCenterData] = useState<SafeCenterType[]>([]);
+  const [map, setMap] = useState<any>(null);
 
   const fetchData = async () => {
     const response = await getSafeCenter();
-    setCenterData(response.records);
+    return response.records;
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (!window.kakao) return;
 
-  useEffect(() => {
     const container = document.getElementById('map');
     const options = {
       center: new window.kakao.maps.LatLng(location.lat, location.lng),
       level: 3,
     };
+    const newMap = new window.kakao.maps.Map(container, options);
+    setMap(newMap);
 
-    const map = new window.kakao.maps.Map(container, options);
-
-    if (centerData.length > 0) {
-      const markers = centerData.map((center) => {
+    fetchData().then((data) => {
+      const markers = data.map((center: SafeCenterType) => {
         const marker = new window.kakao.maps.Marker({
           position: new window.kakao.maps.LatLng(center.latitude, center.longitude),
         });
@@ -49,7 +47,7 @@ export default function KakaoMap({ location }: KakaoMapType) {
         customOverlay.setMap(null);
 
         window.kakao.maps.event.addListener(marker, 'mouseover', () => {
-          customOverlay.setMap(map);
+          customOverlay.setMap(newMap);
         });
 
         window.kakao.maps.event.addListener(marker, 'mouseout', () => {
@@ -60,15 +58,22 @@ export default function KakaoMap({ location }: KakaoMapType) {
       });
 
       const clusterer = new window.kakao.maps.MarkerClusterer({
-        map: map,
+        map: newMap,
         averageCenter: true,
         minLevel: 10,
         disableClickZoom: true,
       });
 
       clusterer.addMarkers(markers);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (map && location) {
+      const moveLatLon = new window.kakao.maps.LatLng(location.lat, location.lng);
+      map.setCenter(moveLatLon);
     }
-  }, [location]);
+  }, [location, map]);
   return (
     <div className="max-w-lg max-h-[512px] h-full">
       <div id="map" style={{ width: '100%', height: '100%' }} />
