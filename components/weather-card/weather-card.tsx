@@ -12,5 +12,5 @@ export default function WeatherCard({ location }: WeatherCardType) {
     localStorage.setItem('x', String(rs.x));
     localStorage.setItem('y', String(rs.y));
   }, []);
-  return <div className="font-Pretendard font-bold">자동화 테스트3</div>;
+  return <div className="font-Pretendard font-bold">자동화 테스트4</div>;
 }
