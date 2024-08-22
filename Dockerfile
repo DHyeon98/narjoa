@@ -11,7 +11,7 @@ COPY package*.json ./
 # 종속성을 설치합니다.
 RUN npm ci
 
-COPY ./.env.local ./
+COPY .env.local ./
 
 # 애플리케이션 코드를 복사합니다.
 COPY . .
