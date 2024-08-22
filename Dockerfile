@@ -8,10 +8,10 @@ ENV PORT=3000
 # 종속성 파일을 복사합니다.
 COPY package*.json ./
 
-COPY ./.env.local ./
-
 # 종속성을 설치합니다.
 RUN npm ci
+
+COPY .env.local ./
 
 # 애플리케이션 코드를 복사합니다.
 COPY . .
