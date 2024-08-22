@@ -46,14 +46,11 @@ export default function KakaoMap({ location }: KakaoMapType) {
         });
         customOverlay.setMap(null);
 
-        window.kakao.maps.event.addListener(marker, 'mouseover', () => {
-          customOverlay.setMap(newMap);
-        });
+        const clickMarker = () => (customOverlay.getMap() ? customOverlay.setMap(null) : customOverlay.setMap(newMap));
+        const clickMap = () => customOverlay.setMap(null);
 
-        window.kakao.maps.event.addListener(marker, 'mouseout', () => {
-          customOverlay.setMap(null);
-        });
-
+        window.kakao.maps.event.addListener(marker, 'click', clickMarker);
+        window.kakao.maps.event.addListener(newMap, 'click', clickMap);
         return marker;
       });
 
