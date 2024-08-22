@@ -18,12 +18,12 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <main className="px-4">
       <WeatherCard location={location} />
       <WeatherChart />
       <section className="pt-2 h-[512px]">
         <KakaoMap location={location} />
       </section>
-    </>
+    </main>
   );
 }

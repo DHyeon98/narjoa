@@ -72,7 +72,7 @@ export default function KakaoMap({ location }: KakaoMapType) {
     }
   }, [location, map]);
   return (
-    <div className="max-w-lg max-h-[512px] h-full">
+    <div className="h-full">
       <div id="map" style={{ width: '100%', height: '100%' }} />
     </div>
   );

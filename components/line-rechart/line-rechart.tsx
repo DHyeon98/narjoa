@@ -21,15 +21,7 @@ const CustomLabel: FunctionComponent<any> = (props: any) => {
 export default function LineRechart({ chartData }: LineChartDataType) {
   return (
     <ResponsiveContainer width="100%" height={150}>
-      <LineChart
-        data={chartData}
-        margin={{
-          top: 20,
-          right: 30,
-          left: 20,
-          bottom: 10,
-        }}
-      >
+      <LineChart data={chartData}>
         <XAxis
           className="font-Pretendard"
           stroke="#1c1c1c"
