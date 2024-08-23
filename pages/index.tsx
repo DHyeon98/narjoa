@@ -10,7 +10,6 @@ export interface LocationType {
 
 export default function Home() {
   const [location, setLocation] = useState<LocationType>({ lat: 37.294855, lng: 126.922385 });
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
@@ -20,7 +19,7 @@ export default function Home() {
   return (
     <main className="px-4">
       <WeatherCard location={location} />
-      <WeatherChart />
+      <WeatherChart location={location} />
       <section className="pt-2 h-[512px]">
         <KakaoMap location={location} />
       </section>

@@ -14,7 +14,7 @@ export interface weatherType {
 
 export const useGetWeatherQuery = (queryData: weatherArgumentType) => {
   return useQuery({
-    queryKey: ['weather'],
+    queryKey: ['weather', queryData],
     queryFn: async () => {
       const data = await getWeather(queryData);
       return data.response.body.items.item.filter((item: weatherType) => item.category === 'TMP');

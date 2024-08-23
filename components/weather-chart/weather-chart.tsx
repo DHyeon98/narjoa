@@ -2,6 +2,8 @@ import { useGetWeatherQuery, weatherType } from '@/hooks/queries/weather';
 import { getBaseDateTime } from '@/utils/get-base-time';
 import { useEffect, useState } from 'react';
 import LineRechart from '../line-rechart/line-rechart';
+import { dfs_xy_conv } from '@/utils/xy-conversion';
+import { LocationType } from '@/pages';
 
 interface ChartDataType {
   date: string;
@@ -10,7 +12,11 @@ interface ChartDataType {
   yValue: number;
 }
 
-export default function WeatherChart() {
+interface WeatherChartType {
+  location: LocationType;
+}
+
+export default function WeatherChart({ location }: WeatherChartType) {
   const { baseDate, baseTime } = getBaseDateTime();
   const [chartData, setChartData] = useState<ChartDataType>();
   const { data, isLoading } = useGetWeatherQuery(chartData!);
@@ -21,14 +27,15 @@ export default function WeatherChart() {
   }));
 
   useEffect(() => {
+    const rs = dfs_xy_conv(location.lat, location.lng);
     const datas = {
       date: baseDate,
       time: baseTime,
-      xValue: Number(localStorage.getItem('x')),
-      yValue: Number(localStorage.getItem('y')),
+      xValue: Number(rs.x),
+      yValue: Number(rs.y),
     };
     setChartData(datas);
-  }, []);
+  }, [location]);
   if (isLoading) return <div>로딩</div>;
   return <LineRechart chartData={filterData} />;
 }
