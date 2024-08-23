@@ -17,9 +17,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="px-4">
+    <main className="px-4 pt-8 layout-container">
       <WeatherCard location={location} />
-      <WeatherChart location={location} />
       <section className="pt-2 h-[512px]">
         <KakaoMap location={location} />
       </section>
