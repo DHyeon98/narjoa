@@ -1,4 +1,4 @@
-import { getWeather, weatherArgumentType } from '@/apis/weather';
+import { getWeather, WeatherArgumentType } from '@/apis/weather';
 import { useQuery } from '@tanstack/react-query';
 
 export interface weatherType {
@@ -12,12 +12,12 @@ export interface weatherType {
   ny: number;
 }
 
-export const useGetWeatherQuery = (queryData: weatherArgumentType) => {
+export const useGetWeatherQuery = (lat: number, lng: number) => {
   return useQuery({
-    queryKey: ['weather', queryData],
+    queryKey: ['weather', lat, lng],
     queryFn: async () => {
-      const data = await getWeather(queryData);
-      return data.response.body.items.item.filter((item: weatherType) => item.category === 'TMP');
+      const data = await getWeather(lat, lng);
+      return data;
     },
   });
 };

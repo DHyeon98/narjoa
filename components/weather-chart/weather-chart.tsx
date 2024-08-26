@@ -4,13 +4,7 @@ import { useEffect, useState } from 'react';
 import LineRechart from '../line-rechart/line-rechart';
 import { dfs_xy_conv } from '@/utils/xy-conversion';
 import { LocationType } from '@/pages';
-
-interface ChartDataType {
-  date: string;
-  time: string;
-  xValue: number;
-  yValue: number;
-}
+import { WeatherArgumentType } from '@/apis/weather';
 
 interface WeatherChartType {
   location: LocationType;
@@ -18,24 +12,24 @@ interface WeatherChartType {
 
 export default function WeatherChart({ location }: WeatherChartType) {
   const { baseDate, baseTime } = getBaseDateTime();
-  const [chartData, setChartData] = useState<ChartDataType>();
-  const { data, isLoading } = useGetWeatherQuery(chartData!);
+  const [chartData, setChartData] = useState<WeatherArgumentType>();
+  const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
+  console.log(data);
 
-  const filterData = data?.map((item: weatherType) => ({
-    fcstTime: item.fcstTime.slice(0, 2) + '시',
-    fcstValue: item.fcstValue,
-  }));
+  // const filterData = data?.map((item: weatherType) => ({
+  //   fcstTime: item.fcstTime.slice(0, 2) + '시',
+  //   fcstValue: item.fcstValue,
+  // }));
 
-  useEffect(() => {
-    const rs = dfs_xy_conv(location.lat, location.lng);
-    const datas = {
-      date: baseDate,
-      time: baseTime,
-      xValue: Number(rs.x),
-      yValue: Number(rs.y),
-    };
-    setChartData(datas);
-  }, [location]);
-  if (isLoading) return <div>로딩</div>;
-  return <LineRechart chartData={filterData} />;
+  // // useEffect(() => {
+  // //   const rs = dfs_xy_conv(location.lat, location.lng);
+  // //   const datas = {
+  // //     lat: rs.x,
+  // //     lng: rs.y,
+  // //   };
+  // //   setChartData(datas);
+  // // }, [location]);
+  // if (isLoading) return <div>로딩</div>;
+  // return <LineRechart chartData={filterData} />;
+  return <div>sa</div>;
 }

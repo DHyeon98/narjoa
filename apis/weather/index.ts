@@ -1,17 +1,14 @@
 import { weatherInstance } from '../instance';
 
-export interface weatherArgumentType {
-  date: string;
-  time: string;
-  xValue: number;
-  yValue: number;
+export interface WeatherArgumentType {
+  lat: string;
+  lng: string;
 }
 
-export const getWeather = async (argumentData: weatherArgumentType) => {
-  const { date, time, xValue, yValue } = argumentData;
+export const getWeather = async (lat: number, lng: number) => {
   try {
     const response = await weatherInstance.get(
-      `getVilageFcst?serviceKey=${process.env.NEXT_PUBLIC_SERVICE_KEY}&base_date=${date}&base_time=${time}&nx=${xValue}&ny=${yValue}&dataType=JSON&numOfRows=50&pageNo=1`,
+      `onecall?lat=${lat}&lon=${lng}&exclude=current,minutely,alerts&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`,
     );
     const data = response.data;
     return data;
