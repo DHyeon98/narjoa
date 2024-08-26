@@ -1,6 +1,5 @@
 import KakaoMap from '@/components/kakao-map/kakao-map';
-import WeatherCard from '@/components/weather-card/weather-card';
-import WeatherChart from '@/components/weather-chart/weather-chart';
+import Weather from '@/components/weather/weather';
 import { useEffect, useState } from 'react';
 
 export interface LocationType {
@@ -18,7 +17,7 @@ export default function Home() {
 
   return (
     <main className="px-4 pt-8 layout-container">
-      <WeatherCard location={location} />
+      <Weather location={location} />
       <section className="pt-2 h-[512px]">
         <KakaoMap location={location} />
       </section>

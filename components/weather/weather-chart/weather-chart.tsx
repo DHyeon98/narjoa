@@ -1,7 +1,7 @@
 import { useGetWeatherQuery, weatherType } from '@/hooks/queries/weather';
-import LineRechart from '../line-rechart/line-rechart';
+import LineRechart from '../../line-rechart/line-rechart';
 import { LocationType } from '@/pages';
-import { getHour } from '@/utils/get-hour';
+import { getHourFromTimestamp } from '@/utils/get-hour-from-timestamp';
 
 interface WeatherChartType {
   location: LocationType;
@@ -12,7 +12,7 @@ export default function WeatherChart({ location }: WeatherChartType) {
   const filterData =
     !isLoading &&
     data.hourly.slice(0, 5).map((item: any) => ({
-      fcstTime: `${getHour(item.dt)}시`,
+      fcstTime: `${getHourFromTimestamp(item.dt)}시`,
       fcstValue: Math.round(item.temp),
     }));
 
