@@ -1,5 +1,5 @@
 import { getSafeCenter, SafeCenterType } from '@/apis/map';
-import { LocationType } from '@/pages';
+import { Location } from '@/types/local';
 import { useEffect, useState } from 'react';
 
 declare global {
@@ -8,11 +8,7 @@ declare global {
   }
 }
 
-interface KakaoMapType {
-  location: LocationType;
-}
-
-export default function KakaoMap({ location }: KakaoMapType) {
+export default function KakaoMap({ location }: Location) {
   const [map, setMap] = useState<any>(null);
 
   const fetchData = async () => {
