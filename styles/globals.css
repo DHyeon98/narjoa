@@ -15,9 +15,16 @@
     font-weight: 500;
   }
 
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(/fonts/Pretendard-Regular.subset.woff2) format('woff2');
+    font-weight: 400;
+  }
+
   html,
   body,
   #__next {
     @apply min-h-screen;
+    font-family: 'Pretendard';
   }
 }

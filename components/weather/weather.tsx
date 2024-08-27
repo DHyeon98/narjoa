@@ -8,11 +8,12 @@ export default function Weather({ location }: Location) {
   return (
     <section>
       <h2 className="font-Pretendard font-bold">{data}</h2>
-      <div className="flex flex-grow gap-12">
-        <article className="w-1/2">
+      <div className="flex flex-grow gap-4 items-end">
+        <div className="w-1/4 h-52 bg-slate-300"></div>
+        <article className="w-1/4">
           <WeatherCard location={location} />
         </article>
-        <article className="w-1/2">
+        <article className="w-2/4">
           <WeatherChart location={location} />
         </article>
       </div>

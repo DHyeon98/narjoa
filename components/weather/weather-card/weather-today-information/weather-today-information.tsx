@@ -14,7 +14,7 @@ export default function WeatherTodayInformation({ location }: Location) {
         <div className="w-24 h-24">{conversionWeatherCode(current.weather[0].id)}</div>
         <ul>
           <li>
-            <p className="font-Pretendard text-3xl">{Math.round(current.temp)}°</p>
+            <p className="font-Pretendard font-bold text-4xl">{Math.round(current.temp)}°</p>
           </li>
           <li className="flex gap-2">
             <ul className="flex gap-[2px]">
