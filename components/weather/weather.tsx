@@ -10,8 +10,13 @@ export default function Weather({ location }: Location) {
     <section className="flex flex-col gap-3">
       <h2 className="font-Pretendard font-bold">{data}</h2>
       <div className="flex flex-grow gap-4 items-end">
-        <div className="w-1/4 h-52 bg-slate-300">
+        <div className="w-1/4 h-52 bg-slate-300 relative">
           <SelectLocationMap location={location} />
+          <div className="z-10 flex justify-center items-center w-full h-full absolute left-0 top-0 bg-black bg-opacity-70">
+            <p className="text-white text-center">
+              지도를 클릭해서 위치를 <br /> 설정해보세요!
+            </p>
+          </div>
         </div>
         <article className="w-1/4">
           <WeatherCard location={location} />
