@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export default function KakaoMap({ location }: Location) {
+export default function SafetyCenterMap({ location }: Location) {
   const [map, setMap] = useState<any>(null);
 
   const fetchData = async () => {

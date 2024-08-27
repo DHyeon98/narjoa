@@ -1,4 +1,4 @@
-import KakaoMap from '@/components/kakao-map/kakao-map';
+import SafetyCenterMap from '@/components/kakao-map/safety-center-map/safety-center-map';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
 import { useEffect, useState } from 'react';
@@ -15,7 +15,7 @@ export default function Home() {
     <main className="px-4 pt-8 layout-container">
       <Weather location={location} />
       <section className="pt-2 h-[512px]">
-        <KakaoMap location={location} />
+        <SafetyCenterMap location={location} />
       </section>
     </main>
   );
