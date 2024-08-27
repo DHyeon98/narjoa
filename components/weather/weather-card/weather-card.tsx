@@ -7,7 +7,7 @@ export default function WeatherCard({ location }: Location) {
   const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
   if (isLoading) return <div>로딩중</div>;
   return (
-    <div>
+    <div className="flex flex-col gap-3">
       <WeatherTodayInformation location={location} />
       <ul className="flex justify-between">
         {data.daily.slice(1, 6).map((dailyDate: any) => {
