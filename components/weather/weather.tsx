@@ -6,7 +6,7 @@ import { Location } from '@/types/local';
 export default function Weather({ location }: Location) {
   const { data } = useGetLocalQuery(location.lat, location.lng);
   return (
-    <section>
+    <section className="flex flex-col gap-3">
       <h2 className="font-Pretendard font-bold">{data}</h2>
       <div className="flex flex-grow gap-4 items-end">
         <div className="w-1/4 h-52 bg-slate-300"></div>

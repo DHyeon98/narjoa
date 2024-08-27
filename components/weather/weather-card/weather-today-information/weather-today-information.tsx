@@ -19,11 +19,17 @@ export default function WeatherTodayInformation({ location }: Location) {
           </li>
           <li className="flex gap-2 text-sm">
             <ul className="flex gap-[2px]">
-              <li>{Math.round(daily[0].temp.max)}°</li>
+              <li className="text-[#FF5A5A] font-bold">
+                <p>{Math.round(daily[0].temp.max)}°</p>
+              </li>
               <li>/</li>
-              <li>{Math.round(daily[0].temp.min)}°</li>
+              <li className="text-[#2370FE] font-bold">
+                <p>{Math.round(daily[0].temp.min)}°</p>
+              </li>
             </ul>
-            <p>체감온도 {Math.round(current.feels_like)}°</p>
+            <p>
+              체감온도 <strong>{Math.round(current.feels_like)}°</strong>
+            </p>
           </li>
           <li>
             <p className="text-sm">
