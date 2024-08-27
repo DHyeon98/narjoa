@@ -1,6 +1,7 @@
+import { conversionWeatherCode } from '@/utils/conversion-weather-code';
 import { getDateFromTimestamp } from '@/utils/get-date';
 
-interface WeatherDateInformationType {
+export interface WeatherDateInformationType {
   informationData: {
     weatherId: number;
     date: number;
@@ -14,6 +15,7 @@ export default function WeatherDateInformation({ informationData }: WeatherDateI
   return (
     <div className="flex flex-col items-center">
       <p>{getDateFromTimestamp(date)}</p>
+      <div>{conversionWeatherCode(weatherId)}</div>
       <ul className="flex">
         <li>{Math.round(maxTemp)}</li>
         <li>/</li>

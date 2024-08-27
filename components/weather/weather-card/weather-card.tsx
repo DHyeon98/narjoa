@@ -1,17 +1,14 @@
 import { useGetWeatherQuery } from '@/hooks/queries/weather';
-import { LocationType } from '@/pages';
 import WeatherDateInformation from './weather-date-information/weather-date-information';
-import { getCurrentDate } from '@/utils/get-current-date';
+import WeatherTodayInformation from './weather-today-information/weather-today-information';
+import { Location } from '@/types/local';
 
-interface WeatherCardType {
-  location: LocationType;
-}
-export default function WeatherCard({ location }: WeatherCardType) {
+export default function WeatherCard({ location }: Location) {
   const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
   if (isLoading) return <div>로딩중</div>;
   return (
     <div>
-      <h3>{getCurrentDate()}</h3>
+      <WeatherTodayInformation location={location} />
       <ul className="flex justify-between">
         {data.daily.slice(1, 6).map((dailyDate: any) => {
           const informationData = {

@@ -1,13 +1,9 @@
 import { useGetWeatherQuery, weatherType } from '@/hooks/queries/weather';
 import LineRechart from '../../line-rechart/line-rechart';
-import { LocationType } from '@/pages';
 import { getHourFromTimestamp } from '@/utils/get-hour-from-timestamp';
+import { Location } from '@/types/local';
 
-interface WeatherChartType {
-  location: LocationType;
-}
-
-export default function WeatherChart({ location }: WeatherChartType) {
+export default function WeatherChart({ location }: Location) {
   const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
   const filterData =
     !isLoading &&
@@ -17,6 +13,5 @@ export default function WeatherChart({ location }: WeatherChartType) {
     }));
 
   if (isLoading) return <div>로딩</div>;
-
   return <LineRechart chartData={filterData} />;
 }

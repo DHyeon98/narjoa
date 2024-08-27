@@ -1,13 +1,9 @@
 import { useGetLocalQuery } from '@/hooks/queries/local';
-import { LocationType } from '@/pages';
 import WeatherChart from './weather-chart/weather-chart';
 import WeatherCard from './weather-card/weather-card';
+import { Location } from '@/types/local';
 
-interface WeatherCardType {
-  location: LocationType;
-}
-
-export default function Weather({ location }: WeatherCardType) {
+export default function Weather({ location }: Location) {
   const { data } = useGetLocalQuery(location.lat, location.lng);
   return (
     <section>
