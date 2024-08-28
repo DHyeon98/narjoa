@@ -1,4 +1,5 @@
 import { getSafeCenter, SafeCenterType } from '@/apis/map';
+import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
 import { Location } from '@/types/local';
 import { useEffect, useRef, useState } from 'react';
 
@@ -11,6 +12,7 @@ declare global {
 export default function SafetyCenterMap({ location }: Location) {
   const safetyCenterMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
+  const customMarker = useCustomMarker(map, location);
 
   const fetchData = async () => {
     const response = await getSafeCenter();
@@ -28,6 +30,7 @@ export default function SafetyCenterMap({ location }: Location) {
     const newMap = new window.kakao.maps.Map(container, options);
     setMap(newMap);
 
+    // 여성안심지킴이집 데이터 패치 후 지도에 마커 표시 및 클러스터
     fetchData().then((data) => {
       const markers = data.map((center: SafeCenterType) => {
         const marker = new window.kakao.maps.Marker({
@@ -66,6 +69,10 @@ export default function SafetyCenterMap({ location }: Location) {
     if (map && location) {
       const moveLatLon = new window.kakao.maps.LatLng(location.lat, location.lng);
       map.setCenter(moveLatLon);
+
+      if (customMarker) {
+        customMarker.setPosition(moveLatLon);
+      }
     }
   }, [location, map]);
   return (
