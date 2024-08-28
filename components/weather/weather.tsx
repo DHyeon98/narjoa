@@ -12,11 +12,11 @@ export interface HandleLocationType {
 export default function Weather({ location, handleChangeLocation }: HandleLocationType) {
   const { data } = useGetLocalQuery(location.lat, location.lng);
   return (
-    <section className="flex flex-col gap-3">
+    <section className="flex flex-col gap-3 layout-container py-14">
       <h2 className="font-Pretendard font-bold">{data}</h2>
       <div className="flex flex-grow gap-4 items-end">
         <SelectLocationMap location={location} handleChangeLocation={handleChangeLocation} />
-        <article className="w-1/4">
+        <article className="w-[344px] flex-shrink-0">
           <WeatherCard location={location} />
         </article>
         <article className="w-2/4">

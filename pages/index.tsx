@@ -1,4 +1,4 @@
-import SafetyCenterMap from '@/components/kakao-map/safety-center-map/safety-center-map';
+import SafetyCenter from '@/components/safety-center/safety-center';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
 import { useEffect, useState } from 'react';
@@ -17,11 +17,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="px-4 pt-8 layout-container">
+    <main>
       <Weather location={location} handleChangeLocation={handleChangeLocation} />
-      <section className="pt-2 h-[512px]">
-        <SafetyCenterMap location={location} />
-      </section>
+      <SafetyCenter location={location} />
     </main>
   );
 }

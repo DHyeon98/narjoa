@@ -91,7 +91,7 @@ export default function SafetyCenterMap({ location }: Location) {
     }
   }, [location, map]);
   return (
-    <div className="h-full">
+    <div className="h-96 w-1/2">
       <div ref={safetyCenterMapRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );

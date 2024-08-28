@@ -26,5 +26,6 @@
   #__next {
     @apply min-h-screen;
     font-family: 'Pretendard';
+    color: #1c1c1c;
   }
 }
