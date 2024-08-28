@@ -13,13 +13,13 @@ export interface WeatherDateInformationType {
 export default function WeatherDateInformation({ informationData }: WeatherDateInformationType) {
   const { weatherId, date, maxTemp, minTemp } = informationData;
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center gap-1">
       <p>{getDateFromTimestamp(date)}</p>
       <div className="w-12 h-12">{conversionWeatherCode(weatherId)}</div>
-      <ul className="flex">
-        <li>{Math.round(maxTemp)}</li>
+      <ul className="flex gap-[2px]">
+        <li className="text-[#FF5A5A] font-bold">{Math.round(maxTemp)}</li>
         <li>/</li>
-        <li>{Math.round(minTemp)}</li>
+        <li className="text-[#2370FE] font-bold">{Math.round(minTemp)}</li>
       </ul>
     </div>
   );

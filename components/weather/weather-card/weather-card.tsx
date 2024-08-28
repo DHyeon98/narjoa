@@ -9,7 +9,7 @@ export default function WeatherCard({ location }: Location) {
   return (
     <div className="flex flex-col gap-3">
       <WeatherTodayInformation location={location} />
-      <ul className="flex justify-between">
+      <ul className="flex justify-between gap-1">
         {data.daily.slice(1, 6).map((dailyDate: any) => {
           const informationData = {
             weatherId: dailyDate.weather[0].id,
@@ -18,7 +18,7 @@ export default function WeatherCard({ location }: Location) {
             minTemp: dailyDate.temp.min,
           };
           return (
-            <li key={dailyDate.dt}>
+            <li className="w-1/5 shadow py-1" key={dailyDate.dt}>
               <WeatherDateInformation informationData={informationData} />
             </li>
           );
