@@ -12,7 +12,19 @@ declare global {
 export default function SafetyCenterMap({ location }: Location) {
   const safetyCenterMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
-  const customMarker = useCustomMarker(map, location);
+  const customMarkerOption = {
+    map: map,
+    location: location,
+    size: {
+      width: 50,
+      height: 50,
+    },
+    position: {
+      x: 28,
+      y: 40,
+    },
+  };
+  const customMarker = useCustomMarker(customMarkerOption);
 
   const fetchData = async () => {
     const response = await getSafeCenter();
@@ -26,6 +38,9 @@ export default function SafetyCenterMap({ location }: Location) {
     const options = {
       center: new window.kakao.maps.LatLng(location.lat, location.lng),
       level: 3,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      draggable: false,
     };
     const newMap = new window.kakao.maps.Map(container, options);
     setMap(newMap);

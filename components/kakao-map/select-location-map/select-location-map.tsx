@@ -1,11 +1,24 @@
 import { HandleLocationType } from '@/components/weather/weather';
+import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
 import { useEffect, useRef, useState } from 'react';
 
 export default function SelectLocationMap({ location, handleChangeLocation }: HandleLocationType) {
   const selectLocationMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [visible, setVisible] = useState(true);
-  const [marker, setMarker] = useState<any>(null);
+  const customMarkerOption = {
+    map: map,
+    location: location,
+    size: {
+      width: 30,
+      height: 30,
+    },
+    position: {
+      x: 16,
+      y: 20,
+    },
+  };
+  const customMarker = useCustomMarker(customMarkerOption);
 
   useEffect(() => {
     if (!window.kakao) return;
@@ -14,37 +27,28 @@ export default function SelectLocationMap({ location, handleChangeLocation }: Ha
     const options = {
       center: new window.kakao.maps.LatLng(location.lat, location.lng),
       level: 15,
-      scrollwheel: false,
-      disableDoubleClickZoom: true,
     };
     const newMap = new window.kakao.maps.Map(container, options);
     setMap(newMap);
-
-    const newMarker = new window.kakao.maps.Marker({
-      position: new window.kakao.maps.LatLng(location.lat, location.lng),
-      map: newMap,
-    });
-    setMarker(newMarker);
   }, []);
 
   useEffect(() => {
-    if (map && location) {
+    if (map && location && customMarker) {
       const moveLatLon = new window.kakao.maps.LatLng(location.lat, location.lng);
       map.setCenter(moveLatLon);
-
-      marker.setPosition(moveLatLon);
 
       const clickListener = window.kakao.maps.event.addListener(map, 'click', (mouseEvent: any) => {
         const latlng = mouseEvent.latLng;
         handleChangeLocation(latlng.getLat(), latlng.getLng());
-        marker.setPosition(latlng);
+
+        customMarker.setPosition(latlng);
       });
 
       return () => {
         window.kakao.maps.event.removeListener(map, 'click', clickListener);
       };
     }
-  }, [location, map]);
+  }, [location, map, customMarker]);
   return (
     <div className="w-1/4 h-52 bg-slate-300 relative">
       <div className="h-full">
