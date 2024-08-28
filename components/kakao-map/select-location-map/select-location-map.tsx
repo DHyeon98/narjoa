@@ -1,7 +1,7 @@
-import { Location } from '@/types/local';
+import { HandleLocationType } from '@/components/weather/weather';
 import { useEffect, useRef, useState } from 'react';
 
-export default function SelectLocationMap({ location }: Location) {
+export default function SelectLocationMap({ location, handleChangeLocation }: HandleLocationType) {
   const selectLocationMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [visible, setVisible] = useState(true);
@@ -38,6 +38,7 @@ export default function SelectLocationMap({ location }: Location) {
 
       const clickListener = window.kakao.maps.event.addListener(map, 'click', (mouseEvent: any) => {
         const latlng = mouseEvent.latLng;
+        handleChangeLocation(latlng.getLat(), latlng.getLng());
         marker.setPosition(latlng);
       });
 
