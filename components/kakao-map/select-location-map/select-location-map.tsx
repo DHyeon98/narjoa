@@ -20,10 +20,8 @@ export default function SelectLocationMap({ location, handleChangeLocation }: Ha
     const newMap = new window.kakao.maps.Map(container, options);
     setMap(newMap);
 
-    const markerPosition = new window.kakao.maps.LatLng(location.lat, location.lng);
-
     const newMarker = new window.kakao.maps.Marker({
-      position: markerPosition,
+      position: new window.kakao.maps.LatLng(location.lat, location.lng),
       map: newMap,
     });
     setMarker(newMarker);

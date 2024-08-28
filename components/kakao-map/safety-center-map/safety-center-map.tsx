@@ -1,6 +1,6 @@
 import { getSafeCenter, SafeCenterType } from '@/apis/map';
 import { Location } from '@/types/local';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 declare global {
   interface Window {
@@ -9,6 +9,7 @@ declare global {
 }
 
 export default function SafetyCenterMap({ location }: Location) {
+  const safetyCenterMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
 
   const fetchData = async () => {
@@ -19,7 +20,7 @@ export default function SafetyCenterMap({ location }: Location) {
   useEffect(() => {
     if (!window.kakao) return;
 
-    const container = document.getElementById('map');
+    const container = safetyCenterMapRef.current;
     const options = {
       center: new window.kakao.maps.LatLng(location.lat, location.lng),
       level: 3,
@@ -69,7 +70,7 @@ export default function SafetyCenterMap({ location }: Location) {
   }, [location, map]);
   return (
     <div className="h-full">
-      <div id="map" style={{ width: '100%', height: '100%' }} />
+      <div ref={safetyCenterMapRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );
 }
