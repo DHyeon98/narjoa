@@ -3,11 +3,18 @@ import WeatherChart from '../weather-chart/weather-chart';
 import WeatherTableIcon from './weather-table-icon/weather-table-icon';
 import WeatherTableTime from './weather-table-time/weather-table-time';
 import { useGetWeatherQuery } from '@/hooks/queries/weather';
+import { WeatherData } from '@/types/weather/hourly';
+import WeatherTableHiddenText from './weather-table-hidden-text/weather-table-hidden-text';
+
+export interface FilterDataType {
+  filterData: WeatherData[];
+}
 
 export default function WeatherTable({ location }: Location) {
   const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
   const filterData = !isLoading && data.hourly.slice(0, 5);
-  console.log(filterData);
+
+  if (isLoading) return <div>로딩중</div>;
   return (
     <div className="relative h-full">
       <table className="w-full h-full border-collapse">
@@ -17,21 +24,21 @@ export default function WeatherTable({ location }: Location) {
         <thead>
           <tr>
             <th>시간</th>
-            <WeatherTableTime location={location} />
+            <WeatherTableTime filterData={filterData} />
           </tr>
         </thead>
         <tbody>
           <tr>
             <th>날씨</th>
-            <WeatherTableIcon location={location} />
+            <WeatherTableIcon filterData={filterData} />
           </tr>
           <tr>
             <th className=" h-full">기온</th>
-            <td colSpan={5}></td>
+            <WeatherTableHiddenText filterData={filterData} />
           </tr>
         </tbody>
       </table>
-      <WeatherChart location={location} />
+      <WeatherChart filterData={filterData} />
     </div>
   );
 }

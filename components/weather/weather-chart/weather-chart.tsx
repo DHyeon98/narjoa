@@ -3,6 +3,8 @@ import { getHourFromTimestamp } from '@/utils/get-hour-from-timestamp';
 import { Location } from '@/types/local';
 import { Line, LineChart, ResponsiveContainer, XAxis } from 'recharts';
 import { FunctionComponent } from 'react';
+import { FilterDataType } from '../wearher-table/weather-table';
+import { WeatherData } from '@/types/weather/hourly';
 
 const CustomLabel: FunctionComponent<any> = (props: any) => {
   const { x, y, value } = props;
@@ -14,18 +16,13 @@ const CustomLabel: FunctionComponent<any> = (props: any) => {
   );
 };
 
-export default function WeatherChart({ location }: Location) {
-  const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
+export default function WeatherChart({ filterData }: FilterDataType) {
+  const chartData = filterData.map((item: WeatherData) => ({
+    fcstValue: Math.round(item.temp),
+  }));
 
-  const chartData =
-    !isLoading &&
-    data.hourly.slice(0, 5).map((item: any) => ({
-      fcstValue: Math.round(item.temp),
-    }));
-
-  if (isLoading) return <div>로딩</div>;
   return (
-    <div className="absolute top-24 right-0 w-[calc(100%-56px)]">
+    <div className="absolute top-28 right-0 w-[calc(100%-56px)]">
       <ResponsiveContainer width="100%" height={80}>
         <LineChart data={chartData} margin={{ top: 20, left: 65, right: 65 }}>
           <Line type="monotone" dataKey="fcstValue" stroke="#8884d8" label={<CustomLabel />} />

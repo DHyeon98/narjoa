@@ -1,3 +1,7 @@
 .layout-container {
   @apply max-w-[1440px] px-4 m-auto;
 }
+
+.hid {
+  @apply absolute left-[-9999px] top-[-9999px] leading-[0] w-0 h-0 overflow-hidden;
+}

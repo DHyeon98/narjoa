@@ -1,5 +1,4 @@
 import { useGetLocalQuery } from '@/hooks/queries/local';
-import WeatherChart from './weather-chart/weather-chart';
 import WeatherCard from './weather-card/weather-card';
 import { LocationType } from '@/types/local';
 import SelectLocationMap from '../kakao-map/select-location-map/select-location-map';
