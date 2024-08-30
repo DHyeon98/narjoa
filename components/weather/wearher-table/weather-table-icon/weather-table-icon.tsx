@@ -1,6 +1,3 @@
-import { useGetLocalQuery } from '@/hooks/queries/local';
-import { useGetWeatherQuery } from '@/hooks/queries/weather';
-import { Location, LocationType } from '@/types/local';
 import { conversionWeatherCode } from '@/utils/conversion-weather-code';
 import { FilterDataType } from '../weather-table';
 import { WeatherData } from '@/types/weather/hourly';
