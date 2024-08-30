@@ -3,6 +3,7 @@ import WeatherChart from './weather-chart/weather-chart';
 import WeatherCard from './weather-card/weather-card';
 import { LocationType } from '@/types/local';
 import SelectLocationMap from '../kakao-map/select-location-map/select-location-map';
+import WeatherTable from './wearher-table/weather-table';
 
 export interface HandleLocationType {
   location: LocationType;
@@ -22,7 +23,7 @@ export default function Weather({ location, handleChangeLocation }: HandleLocati
           </article>
         </div>
         <article className="lg:w-1/2 w-full">
-          <WeatherChart location={location} />
+          <WeatherTable location={location} />
         </article>
       </div>
     </section>
