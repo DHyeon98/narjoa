@@ -25,9 +25,9 @@ export default function WeatherChart({ location }: Location) {
 
   if (isLoading) return <div>로딩</div>;
   return (
-    <div>
+    <div className="absolute top-24 right-0 w-[calc(100%-56px)]">
       <ResponsiveContainer width="100%" height={80}>
-        <LineChart data={chartData} margin={{ top: 20, left: 32, right: 32 }}>
+        <LineChart data={chartData} margin={{ top: 20, left: 65, right: 65 }}>
           <Line type="monotone" dataKey="fcstValue" stroke="#8884d8" label={<CustomLabel />} />
         </LineChart>
       </ResponsiveContainer>
