@@ -14,12 +14,14 @@ export default function Weather({ location, handleChangeLocation }: HandleLocati
   return (
     <section className="flex flex-col gap-3 layout-container py-14">
       <h2 className="font-Pretendard font-bold">{data}</h2>
-      <div className="flex flex-grow gap-4 items-end">
-        <SelectLocationMap location={location} handleChangeLocation={handleChangeLocation} />
-        <article className="w-[344px] flex-shrink-0">
-          <WeatherCard location={location} />
-        </article>
-        <article className="w-2/4">
+      <div className="flex flex-grow gap-4 flex-wrap lg:flex-nowrap items-end">
+        <div className="flex gap-4 lg:w-1/2 w-full">
+          <SelectLocationMap location={location} handleChangeLocation={handleChangeLocation} />
+          <article className="w-1/2">
+            <WeatherCard location={location} />
+          </article>
+        </div>
+        <article className="lg:w-1/2 w-full">
           <WeatherChart location={location} />
         </article>
       </div>
