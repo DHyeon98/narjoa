@@ -1,3 +1,4 @@
+import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
@@ -20,6 +21,7 @@ export default function Home() {
     <main>
       <Weather location={location} handleChangeLocation={handleChangeLocation} />
       <SafetyCenter location={location} />
+      <News location={location} />
     </main>
   );
 }
