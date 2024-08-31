@@ -4,7 +4,7 @@ import { Location } from '@/types/local';
 import { Line, LineChart, ResponsiveContainer, XAxis } from 'recharts';
 import { FunctionComponent } from 'react';
 import { FilterDataType } from '../wearher-table/weather-table';
-import { WeatherData } from '@/types/weather/hourly';
+import { HourlyType } from '@/types/weather/hourly';
 
 const CustomLabel: FunctionComponent<any> = (props: any) => {
   const { x, y, value } = props;
@@ -17,7 +17,7 @@ const CustomLabel: FunctionComponent<any> = (props: any) => {
 };
 
 export default function WeatherChart({ filterData }: FilterDataType) {
-  const chartData = filterData.map((item: WeatherData) => ({
+  const chartData = filterData.map((item: HourlyType) => ({
     fcstValue: Math.round(item.temp),
   }));
 

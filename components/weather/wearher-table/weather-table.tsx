@@ -3,11 +3,11 @@ import WeatherChart from '../weather-chart/weather-chart';
 import WeatherTableIcon from './weather-table-icon/weather-table-icon';
 import WeatherTableTime from './weather-table-time/weather-table-time';
 import { useGetWeatherQuery } from '@/hooks/queries/weather';
-import { WeatherData } from '@/types/weather/hourly';
+import { HourlyType } from '@/types/weather/hourly';
 import WeatherTableHiddenText from './weather-table-hidden-text/weather-table-hidden-text';
 
 export interface FilterDataType {
-  filterData: WeatherData[];
+  filterData: HourlyType[];
 }
 
 export default function WeatherTable({ location }: Location) {

@@ -1,4 +1,4 @@
-export interface WeatherData {
+export interface HourlyType {
   clouds: number;
   dew_point: number;
   dt: number;
@@ -15,7 +15,7 @@ export interface WeatherData {
   wind_speed: number;
 }
 
-interface WeatherItem {
+export interface WeatherItem {
   description: string;
   icon: string;
   id: number;

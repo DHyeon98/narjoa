@@ -5,6 +5,7 @@ import { Location } from '@/types/local';
 
 export default function WeatherCard({ location }: Location) {
   const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
+  console.log(data);
   if (isLoading) return <div>로딩중</div>;
   return (
     <div className="flex flex-col gap-3">
