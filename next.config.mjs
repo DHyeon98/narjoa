@@ -6,8 +6,15 @@ const nextConfig = {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
-
     return config;
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: 'https://openapi.naver.com/:path*',
+      },
+    ];
   },
 };
 

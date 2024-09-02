@@ -2,7 +2,7 @@ import { newsInstance } from '../instance';
 
 export const getNews = async (area: string) => {
   try {
-    const response = await newsInstance.get(`?query=${area} 범죄&sort=sim`);
+    const response = await newsInstance.get(`../v1/search/news.json?query=범죄`);
     const data = response.data;
     return data;
   } catch {
