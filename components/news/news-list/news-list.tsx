@@ -8,7 +8,7 @@ interface NewsListType {
 
 export default function NewsList({ newsData }: NewsListType) {
   return (
-    <ul className="w-3/5">
+    <ul>
       {newsData.map((item: News) => {
         const uniqueKey = uuidv4();
         return (

@@ -1,11 +1,11 @@
 import { getNews } from '@/apis/news';
 import { useQuery } from '@tanstack/react-query';
 
-export const useGetNewsQuery = (area: string, enabled: boolean) => {
+export const useGetNewsQuery = (area: string, enabled: boolean, pageNum: number) => {
   return useQuery({
-    queryKey: ['news', area],
+    queryKey: ['news', area, pageNum],
     queryFn: async () => {
-      const data = await getNews(area);
+      const data = await getNews(area, pageNum);
       return data;
     },
     enabled,
