@@ -2,7 +2,7 @@ import { useGetLocalQuery } from '@/hooks/queries/local';
 import { useGetNewsQuery } from '@/hooks/queries/news';
 import { Location } from '@/types/local';
 import NewsList from './news-list/news-list';
-import Pagination from '../pagination/pagination';
+import Pagination from './pagination/pagination';
 import { MouseEvent, useEffect, useState } from 'react';
 
 export default function News({ location }: Location) {

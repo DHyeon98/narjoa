@@ -1,3 +1,4 @@
+import IntroductionLink from '@/components/introduction-link/introduction-link';
 import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
 import Weather from '@/components/weather/weather';
@@ -22,6 +23,7 @@ export default function Home() {
       <Weather location={location} handleChangeLocation={handleChangeLocation} />
       <SafetyCenter location={location} />
       <News location={location} />
+      <IntroductionLink />
     </main>
   );
 }
