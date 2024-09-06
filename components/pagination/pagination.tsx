@@ -15,6 +15,8 @@ const getPageNumbers = (currentPage: number, maxPage: number) => {
 
 export default function Pagination({ maxPage, handlePage, currentPage }: PaginationType) {
   const [pageNum, setPageNum] = useState<number[]>(getPageNumbers(currentPage, maxPage));
+  const isPreviousDisabled = pageNum[0] === 1;
+  const isNextDisabled = pageNum[pageNum.length - 1] === Math.ceil(maxPage / 5);
 
   const pagePrevious = () => {
     setPageNum((prev) => {
@@ -31,9 +33,6 @@ export default function Pagination({ maxPage, handlePage, currentPage }: Paginat
       return newPageNum;
     });
   };
-
-  const isPreviousDisabled = pageNum[0] === 1;
-  const isNextDisabled = pageNum[pageNum.length - 1] === Math.ceil(maxPage / 5);
 
   useEffect(() => {
     setPageNum(getPageNumbers(currentPage, maxPage));
