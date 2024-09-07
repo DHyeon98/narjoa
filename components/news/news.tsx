@@ -14,8 +14,13 @@ export default function News({ location }: Location) {
     currentPage,
   );
 
-  const handlePage = (e: MouseEvent<HTMLButtonElement>) => {
-    setCurrentPage(Number(e.currentTarget.value));
+  const handleClickEvents = {
+    pageNumClick: (e: MouseEvent<HTMLButtonElement>) => {
+      setCurrentPage(Number(e.currentTarget.value));
+    },
+    pageArrowClick: (condition: 'prev' | 'next') => {
+      setCurrentPage((current) => (condition === 'prev' ? current - 1 : current + 1));
+    },
   };
 
   useEffect(() => {
@@ -31,7 +36,7 @@ export default function News({ location }: Location) {
         <h2 className="font-bold text-2xl text-[#0c5cb1]">{localData} 범죄 관련 기사</h2>
         <NewsList newsData={newsData.items} />
         <div className="flex justify-center mt-4">
-          <Pagination maxPage={newsData.total} handlePage={handlePage} currentPage={currentPage} />
+          <Pagination maxPage={newsData.total} handleClickEvents={handleClickEvents} currentPage={currentPage} />
         </div>
       </article>
     </section>
