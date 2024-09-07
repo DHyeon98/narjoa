@@ -1,5 +1,5 @@
 import { useGetLocalQuery } from '@/hooks/queries/local';
-import { useGetNewsQuery } from '@/hooks/queries/news';
+import { useGetNewsQuery, usePrefetchNews } from '@/hooks/queries/news';
 import { Location } from '@/types/local';
 import NewsList from './news-list/news-list';
 import Pagination from './pagination/pagination';
@@ -21,6 +21,8 @@ export default function News({ location }: Location) {
   useEffect(() => {
     setCurrentPage(1);
   }, [location]);
+
+  usePrefetchNews(localData, currentPage);
 
   if (newsQueryLoading) return <div>로딩중</div>;
   return (
