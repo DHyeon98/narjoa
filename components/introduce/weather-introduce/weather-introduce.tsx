@@ -2,7 +2,7 @@ import { WEATHER_INTRODUCE_DATA } from '@/constants/weather-introduce';
 
 export default function WeatherIntroduce() {
   return (
-    <section className="py-14 px-14 rounded-2xl bg-slate-100">
+    <section className="introduce-bg">
       <h3 className="text-center text-xl font-bold mb-8">1. 위치 기반 날씨 정보 제공</h3>
       <ul className="flex justify-between gap-10">
         {WEATHER_INTRODUCE_DATA.map((data, index) => {

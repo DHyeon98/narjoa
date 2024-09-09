@@ -36,6 +36,9 @@ const config: Config = {
         '.weather-introduce-card': {
           '@apply w-1/3 bg-white rounded-2xl text-center py-3 px-10 break-keep': '',
         },
+        '.introduce-bg': {
+          '@apply py-14 px-14 rounded-2xl bg-slate-100': '',
+        },
       });
     },
   ],
