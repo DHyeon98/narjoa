@@ -1,3 +1,4 @@
+import Footer from '@/components/footer/footer';
 import Header from '@/components/header/header';
 import '@/styles/globals.css';
 import '@/styles/tailwind.css';
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </QueryClientProvider>
   );
 }

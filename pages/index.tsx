@@ -1,4 +1,3 @@
-import Footer from '@/components/footer/footer';
 import IntroductionLink from '@/components/introduction-link/introduction-link';
 import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
@@ -25,7 +24,6 @@ export default function Home() {
       <SafetyCenter location={location} />
       <News location={location} />
       <IntroductionLink />
-      <Footer />
     </main>
   );
 }
