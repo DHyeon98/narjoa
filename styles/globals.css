@@ -28,6 +28,11 @@
     font-family: 'Pretendard';
     color: #1c1c1c;
   }
+  #__next {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
   table,
   td,
