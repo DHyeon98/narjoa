@@ -1,7 +1,6 @@
 import Footer from '@/components/footer/footer';
 import Header from '@/components/header/header';
 import '@/styles/globals.css';
-import '@/styles/tailwind.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 

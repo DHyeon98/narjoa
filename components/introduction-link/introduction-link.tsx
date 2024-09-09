@@ -5,7 +5,7 @@ import IntroduceSVG from '@/public/images/introduce_section.svg';
 export default function IntroductionLink() {
   return (
     <section className="py-14 bg-slate-50">
-      <div className="layout-container h-[300px] flex gap-6 justify-center items-center">
+      <div className="layout-container h-[300px] flex-center gap-6">
         <article className="w-[300px] h-full">
           <IntroduceSVG width="100%" height="100%" viewBox="0 0 610.81982 489.57062" />
         </article>
@@ -13,10 +13,7 @@ export default function IntroductionLink() {
           <h2 className="font-bold text-xl">홈페이지에 대해 궁금하신가요?</h2>
           <p className="font-medium text-lg mb-8">소개 페이지로 이동해서 더 자세히 알아보세요.</p>
           <span className="flex">
-            <Link
-              href={'/introduce'}
-              className="flex items-center gap-1 justify-center bg-slate-900 text-white py-1 px-3"
-            >
+            <Link href={'/introduce'} className="flex-center gap-1 bg-slate-900 text-white py-1 px-3">
               소개 페이지 이동
               <LongArrowSVG fill="#fff" />
             </Link>

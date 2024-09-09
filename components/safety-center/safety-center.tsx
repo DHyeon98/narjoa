@@ -4,7 +4,7 @@ import SafetyCenterMap from '../kakao-map/safety-center-map/safety-center-map';
 export default function SafetyCenter({ location }: Location) {
   return (
     <section className="py-14 bg-slate-50">
-      <article className="layout-container flex gap-10 items-center justify-center ">
+      <article className="layout-container flex-center gap-10 ">
         <div>
           <h2 className="font-bold text-3xl leading-relaxed">여성안심지킴이집이란?</h2>
           <p>

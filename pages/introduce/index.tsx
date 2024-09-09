@@ -1,7 +1,14 @@
+import WeatherIntroduce from '@/components/introduce/weather-introduce/weather-introduce';
+
 export default function IntroducePage() {
   return (
-    <main>
-      <section>홈페이지 소개</section>
+    <main className="layout-container">
+      <section className="py-14">
+        <h2 className="text-2xl font-bold text-center">
+          <span className="inline-block pb-4 border-b-4">홈페이지 소개</span>
+        </h2>
+      </section>
+      <WeatherIntroduce />
       <section>1. 위치 설정 및 날씨 안내 - openweatherAPI, 카카오 지도, 카카오 로컬 api 사용</section>
       <section>
         2. 주위 여성안심지킴이집 안내 - 카카오 지도, 전국여성안심지킴이집 공공데이터 포털 api 사용 - 지정한 위치의
