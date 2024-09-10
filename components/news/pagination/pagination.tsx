@@ -29,7 +29,6 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
 
   const handleNext = () => {
     handleClickEvents.pageArrowClick('next');
-    console.log(currentPage);
     if (currentPage % 5 === 0) {
       setPageNum((prev) => {
         const lastPage = prev[prev.length - 1];
@@ -52,7 +51,7 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
         return (
           <li key={pageNumber}>
             <button
-              className={`w-[34px] h-[34px] ${
+              className={`w-[34px] h-[34px] hover:underline ${
                 currentPage === pageNumber && `bg-black text-white rounded-full font-bold`
               }`}
               type="button"

@@ -2,6 +2,7 @@ import GithubSVG from '@/public/images/github.svg';
 import VelogSVG from '@/public/images/velog.svg';
 import DhyeonSVG from '@/public/images/dhyeon98_logo.svg';
 import Link from 'next/link';
+import { FOOTER_LINK_DATA } from '@/constants/footer-link';
 
 export default function Footer() {
   return (
@@ -11,16 +12,19 @@ export default function Footer() {
           <DhyeonSVG width="100%" height="100%" fill="#fff" />
         </div>
         <ul className="flex gap-3 py-5 w-4/5 justify-center border-b border-gray-300">
-          <li>
-            <Link className="block w-8 h-8 rounded-full overflow-hidden" href={'https://github.com/DHyeon98'}>
-              <GithubSVG width="100%" height="100%" fill="#fff" />
-            </Link>
-          </li>
-          <li>
-            <Link className="block w-8 h-8 rounded-full overflow-hidden" href={'https://velog.io/@d_hyeon/posts'}>
-              <VelogSVG width="100%" height="100%" fill="#fff" />
-            </Link>
-          </li>
+          {FOOTER_LINK_DATA.map((data, index) => {
+            return (
+              <li key={index}>
+                <Link
+                  className="block w-8 h-8 rounded-full overflow-hidden transition-transform duration-300 hover:-translate-y-1"
+                  href={data.href}
+                  target="_blank"
+                >
+                  <data.IconComponent width="100%" height="100%" fill="#fff" aria-labe={data.ariaLabel} />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <p className="text-white text-xs pt-5">&#169;2024 DHyeon98. All rights reserved</p>
       </div>

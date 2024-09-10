@@ -7,15 +7,17 @@ interface PaginationButtonType {
 }
 
 export default function PaginationButton({ isDisabled, handleClick, ariaLabel }: PaginationButtonType) {
+  const disabledButtonColor = isDisabled ? 'bg-[#e7e7e7] fill-[#888]' : 'bg-white fill-[#555]';
+  const disabledHover = !isDisabled && 'hover:bg-black hover:fill-white';
   return (
     <button
-      className={`paginationButton ${isDisabled ? 'bg-[#e7e7e7]' : 'bg-white'}`}
+      className={`paginationButton ${disabledButtonColor} ${disabledHover}`}
       type="button"
       onClick={handleClick}
       disabled={isDisabled}
       aria-label={ariaLabel}
     >
-      <ArrowSVG fill={isDisabled ? '#888' : '#555'} width={16} height={16} viewBox="0 0 20 20" />
+      <ArrowSVG width={16} height={16} viewBox="0 0 20 20" />
     </button>
   );
 }
