@@ -22,7 +22,7 @@ const config: Config = {
     ({ addUtilities }: any) => {
       addUtilities({
         '.layout-container': {
-          '@apply max-w-[1440px] px-4 mx-auto': '',
+          '@apply max-w-[1440px] px-4 mx-auto w-full': '',
         },
         '.hid': {
           '@apply relative left-[-9999px] top-[-9999px] leading-[0] w-0 h-0 overflow-hidden': '',
@@ -37,7 +37,10 @@ const config: Config = {
           '@apply w-1/3 bg-white rounded-2xl text-center py-3 px-10 break-keep': '',
         },
         '.introduce-bg': {
-          '@apply py-14 px-14 rounded-2xl bg-slate-100': '',
+          '@apply p-14 rounded-2xl bg-slate-100 max-lg:p-8 max-md:p-6': '',
+        },
+        '.introduce-title': {
+          '@apply text-center text-xl font-bold mb-8 max-lg:mb-6 max-md:text-lg': '',
         },
         '.link-button': {
           '@apply flex-center bg-slate-900 text-white hover:bg-slate-600': '',
