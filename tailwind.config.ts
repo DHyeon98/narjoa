@@ -25,7 +25,7 @@ const config: Config = {
           '@apply max-w-[1440px] px-4 mx-auto w-full': '',
         },
         '.hid': {
-          '@apply relative left-[-9999px] top-[-9999px] leading-[0] w-0 h-0 overflow-hidden': '',
+          '@apply absolute left-[-9999px] top-[-9999px] leading-[0] w-0 h-0 overflow-hidden': '',
         },
         '.paginationButton': {
           '@apply flex-center w-[34px] h-[34px] rounded-full border border-[#b1b1b1]': '',
