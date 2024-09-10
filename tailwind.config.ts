@@ -39,6 +39,9 @@ const config: Config = {
         '.introduce-bg': {
           '@apply py-14 px-14 rounded-2xl bg-slate-100': '',
         },
+        '.link-button': {
+          '@apply flex-center bg-slate-900 text-white hover:bg-slate-600': '',
+        },
       });
     },
   ],

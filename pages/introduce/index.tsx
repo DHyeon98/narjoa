@@ -19,7 +19,7 @@ export default function IntroducePage() {
         </div>
       </div>
       <section className="flex-center py-14">
-        <Link className="flex-center bg-slate-900 text-white py-3 px-6" href={'/'}>
+        <Link className="link-button py-3 px-6" href={'/'}>
           메인페이지로 이동
         </Link>
       </section>
