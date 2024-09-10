@@ -20,7 +20,7 @@ export default function Footer() {
                   href={data.href}
                   target="_blank"
                 >
-                  <data.IconComponent width="100%" height="100%" fill="#fff" aria-labe={data.ariaLabel} />
+                  <data.IconComponent width="100%" height="100%" fill="#fff" aria-label={data.ariaLabel} />
                 </Link>
               </li>
             );
