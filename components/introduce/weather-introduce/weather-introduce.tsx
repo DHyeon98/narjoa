@@ -10,7 +10,7 @@ export default function WeatherIntroduce() {
             <li key={index} className="weather-introduce-card">
               <strong className="text-xl">step{index + 1}.</strong>
               <div className="w-44 mx-auto my-3">
-                <data.IconComponent width="100%" height="100%" viewBox="0 0 900 600" />
+                <data.IconComponent width="100%" height="100%" viewBox="0 0 900 600" aria-label={data.text} />
               </div>
               <p>{data.text}</p>
             </li>

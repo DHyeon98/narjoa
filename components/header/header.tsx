@@ -7,7 +7,7 @@ export default function Header() {
       <div className="layout-container">
         <h1>
           <Link className="inline-block" href={'/'}>
-            <LogoSvg width="150" viewBox="0 0 200 75" />
+            <LogoSvg width="150" viewBox="0 0 200 75" aria-lable="메인 로고 (홈으로 이동)" />
           </Link>
         </h1>
       </div>
