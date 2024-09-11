@@ -16,6 +16,9 @@ const config: Config = {
       fontFamily: {
         Pretendard: ['Pretendard'],
       },
+      transitionDuration: {
+        '2000': '2000ms',
+      },
     },
   },
   plugins: [
