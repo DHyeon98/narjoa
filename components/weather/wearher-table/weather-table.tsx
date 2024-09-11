@@ -16,8 +16,8 @@ export default function WeatherTable({ location }: Location) {
 
   if (isLoading) return <div>로딩중</div>;
   return (
-    <div className="relative h-full">
-      <table className="w-full h-full border-collapse">
+    <div className="relative h-full max-lg:overflow-x-scroll">
+      <table className="w-full h-full border-collapse max-lg:w-[992px]">
         <caption>
           <span className="hid">
             이 표는 현재 시각으로부터 1시간씩 총 5시간의 시간, 날씨, 기온에 대한 정보가 담겨있습니다.
