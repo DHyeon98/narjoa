@@ -2,7 +2,10 @@ import { HandleLocationType } from '@/components/weather/weather';
 import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
 import { useEffect, useRef, useState } from 'react';
 
-export default function SelectLocationMap({ location, handleChangeLocation }: HandleLocationType) {
+export default function SelectLocationMap({
+  location,
+  handleChangeLocation,
+}: Omit<HandleLocationType, 'handleSetLocation'>) {
   const selectLocationMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [visible, setVisible] = useState(true);
@@ -50,7 +53,7 @@ export default function SelectLocationMap({ location, handleChangeLocation }: Ha
     }
   }, [location, map, customMarker]);
   return (
-    <div className="w-1/2 h-[220px] bg-slate-300 relative max-md:hidden">
+    <div className="w-1/2 h-[220px] bg-slate-300 relative max-md:w-full">
       <div className="h-full">
         <div ref={selectLocationMapRef} style={{ width: '100%', height: '100%' }} />
       </div>

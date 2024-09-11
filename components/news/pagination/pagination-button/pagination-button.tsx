@@ -11,7 +11,7 @@ export default function PaginationButton({ isDisabled, handleClick, ariaLabel }:
   const disabledHover = !isDisabled && 'hover:bg-black hover:fill-white';
   return (
     <button
-      className={`paginationButton ${disabledButtonColor} ${disabledHover} max-md:w-[24px] max-md:h-[24px]`}
+      className={`paginationButton ${disabledButtonColor} ${disabledHover} max-md:w-[28px] max-md:h-[28px]`}
       type="button"
       onClick={handleClick}
       disabled={isDisabled}

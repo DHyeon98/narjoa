@@ -6,21 +6,24 @@ import { LocationType } from '@/types/local';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [location, setLocation] = useState<LocationType>({ lat: 37.294855, lng: 126.922385 });
+  const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
 
   const handleChangeLocation = (lat: number, lng: number) => {
     setLocation({ lat: lat, lng: lng });
   };
 
-  useEffect(() => {
+  const handleSetLocation = () =>
     navigator.geolocation.getCurrentPosition((position) => {
       setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
     });
+
+  useEffect(() => {
+    handleSetLocation();
   }, []);
 
   return (
     <main>
-      <Weather location={location} handleChangeLocation={handleChangeLocation} />
+      <Weather handleSetLocation={handleSetLocation} location={location} handleChangeLocation={handleChangeLocation} />
       <SafetyCenter location={location} />
       <News location={location} />
       <IntroductionLink />

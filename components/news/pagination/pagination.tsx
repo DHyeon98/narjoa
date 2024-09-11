@@ -53,7 +53,7 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
             <button
               className={`w-[34px] h-[34px] hover:underline ${
                 currentPage === pageNumber && `bg-black text-white rounded-full font-bold`
-              } max-md:w-[24px] max-md:h-[24px] max-md:text-sm`}
+              } max-md:w-[28px] max-md:h-[28px] max-md:text-sm`}
               type="button"
               value={pageNumber}
               onClick={handleClickEvents.pageNumClick}
