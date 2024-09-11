@@ -12,7 +12,7 @@ export default function NewsList({ newsData }: NewsListType) {
       {newsData.map((item: News) => {
         const uniqueKey = uuidv4();
         return (
-          <li key={uniqueKey} className="border-b border-slate-200 py-4">
+          <li key={uniqueKey} className="border-b border-slate-200 py-4 max-md:py-2">
             <NewsItem newsData={item} />
           </li>
         );

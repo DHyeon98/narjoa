@@ -43,7 +43,7 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
   }, [maxPage]);
 
   return (
-    <ul className="flex gap-5 items-center">
+    <ul className="flex gap-5 items-center max-md:gap-3">
       <li className="rotate-180">
         <PaginationButton isDisabled={isPreviousDisabled} handleClick={handlePrevious} ariaLabel="이전 페이지" />
       </li>
@@ -53,7 +53,7 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
             <button
               className={`w-[34px] h-[34px] hover:underline ${
                 currentPage === pageNumber && `bg-black text-white rounded-full font-bold`
-              }`}
+              } max-md:w-[24px] max-md:h-[24px] max-md:text-sm`}
               type="button"
               value={pageNumber}
               onClick={handleClickEvents.pageNumClick}
