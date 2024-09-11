@@ -19,7 +19,7 @@ export default function Weather({ location, handleChangeLocation, handleSetLocat
         <h2 className="font-Pretendard font-bold text-2xl">{data}</h2>
         <button
           type="button"
-          className="w-5 h-5"
+          className="w-5 h-5 hover:fill-red-600"
           onClick={handleSetLocation}
           title="클릭시 현재 사용자 위치로 변경됩니다."
         >
