@@ -1,5 +1,6 @@
 import { HandleLocationType } from '@/components/weather/weather';
 import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
+import { OutOfAreaVerification } from '@/utils/out-of-area-verification';
 import { useEffect, useRef, useState } from 'react';
 
 export default function SelectLocationMap({
@@ -40,12 +41,19 @@ export default function SelectLocationMap({
       const moveLatLon = new window.kakao.maps.LatLng(location.lat, location.lng);
       map.setCenter(moveLatLon);
 
-      const clickListener = window.kakao.maps.event.addListener(map, 'click', (mouseEvent: any) => {
+      const clickListener = (mouseEvent: any) => {
         const latlng = mouseEvent.latLng;
-        handleChangeLocation(latlng.getLat(), latlng.getLng());
+        const lat = latlng.getLat();
+        const lng = latlng.getLng();
+        if (OutOfAreaVerification(lat, lng)) {
+          handleChangeLocation(lat, lng);
+          customMarker.setPosition(latlng);
+        } else {
+          alert('지원하지 않는 지역입니다.');
+        }
+      };
 
-        customMarker.setPosition(latlng);
-      });
+      window.kakao.maps.event.addListener(map, 'click', clickListener);
 
       return () => {
         window.kakao.maps.event.removeListener(map, 'click', clickListener);
