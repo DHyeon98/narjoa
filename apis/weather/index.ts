@@ -12,6 +12,6 @@ export const getWeather = async (lat: number, lng: number) => {
     );
     return response.data;
   } catch {
-    console.log('에러');
+    throw new Error('날씨 정보를 가져오는 중 오류가 발생했습니다.');
   }
 };

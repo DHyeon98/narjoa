@@ -19,5 +19,6 @@ export const useGetWeatherQuery = (lat: number, lng: number) => {
       const data = await getWeather(lat, lng);
       return data;
     },
+    throwOnError: true,
   });
 };

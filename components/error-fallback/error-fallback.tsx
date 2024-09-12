@@ -1,4 +1,5 @@
 export default function ErrorFallback({ error }: any) {
+  console.log(error);
   return (
     <div className="flex-center flex-col mt-auto px-4 text-center">
       <p className="text-lg">페이지를 불러오는 중 문제가 발생했습니다.</p>

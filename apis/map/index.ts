@@ -23,6 +23,6 @@ export const getSafeCenter = async () => {
     const response = await axios.get(`/json/safety-center.json`);
     return response.data;
   } catch {
-    console.log('에러');
+    throw new Error('데이터를 가져오는 중 오류가 발생했습니다 ');
   }
 };

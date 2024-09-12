@@ -8,5 +8,6 @@ export const useGetLocalQuery = (lat: number, lng: number) => {
       const data = await getLocal(lng, lat);
       return data;
     },
+    throwOnError: true,
   });
 };

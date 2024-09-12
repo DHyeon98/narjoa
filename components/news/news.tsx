@@ -33,7 +33,7 @@ export default function News({ location }: Location) {
 
   if (newsQueryLoading)
     return (
-      <div className="layout-container h-[700px]">
+      <div className="layout-container max-w-[700px] h-[700px]">
         <Spinner />
       </div>
     );

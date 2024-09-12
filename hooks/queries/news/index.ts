@@ -10,6 +10,7 @@ export const useGetNewsQuery = (area: string, enabled: boolean, pageNum: number)
       return data;
     },
     enabled,
+    throwOnError: true,
   });
 };
 
