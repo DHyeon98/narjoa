@@ -12,7 +12,7 @@ export default function Document() {
           type="text/javascript"
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&libraries=clusterer`}
         ></script>
-        <title>날조아 : NARJOA</title>
+        <title>날조아 | 날이 좋은 하루, 안전한 오늘</title>
       </Head>
       <body>
         <Main />
