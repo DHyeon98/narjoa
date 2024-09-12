@@ -21,8 +21,7 @@ export interface SafeCenterType {
 export const getSafeCenter = async () => {
   try {
     const response = await axios.get(`/json/safety-center.json`);
-    const data = response.data;
-    return data;
+    return response.data;
   } catch {
     console.log('에러');
   }
