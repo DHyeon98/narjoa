@@ -5,6 +5,7 @@ import WeatherTableTime from './weather-table-time/weather-table-time';
 import { useGetWeatherQuery } from '@/hooks/queries/weather';
 import { HourlyType } from '@/types/weather/hourly';
 import WeatherTableHiddenText from './weather-table-hidden-text/weather-table-hidden-text';
+import { Spinner } from '@/components/spinner/spinner';
 
 export interface FilterDataType {
   filterData: HourlyType[];
@@ -14,7 +15,7 @@ export default function WeatherTable({ location }: Location) {
   const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
   const filterData = !isLoading && data.hourly.slice(0, 5);
 
-  if (isLoading) return <div>로딩중</div>;
+  if (isLoading) return <Spinner />;
   return (
     <div className="relative h-full max-lg:overflow-x-scroll">
       <table className="w-full h-full border-collapse max-lg:w-[992px]">

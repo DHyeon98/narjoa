@@ -3,10 +3,11 @@ import WeatherDateInformation from './weather-date-information/weather-date-info
 import WeatherTodayInformation from './weather-today-information/weather-today-information';
 import { Location } from '@/types/local';
 import { DailyType } from '@/types/weather/daily';
+import { Spinner } from '@/components/spinner/spinner';
 
 export default function WeatherCard({ location }: Location) {
   const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
-  if (isLoading) return <div>로딩중</div>;
+  if (isLoading) return <Spinner />;
   return (
     <div className="flex flex-col gap-3">
       <WeatherTodayInformation location={location} />

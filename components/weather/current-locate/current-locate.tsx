@@ -8,9 +8,10 @@ export default function CurrentLocate({
   handleSetLocation,
 }: Omit<HandleLocationType, 'handleChangeLocation'>) {
   const { data } = useGetLocalQuery(location.lat, location.lng);
+  const locateName = data ? data : '알수없음';
   return (
     <div className="flex items-center gap-2">
-      <h2 className="font-Pretendard font-bold text-2xl">{data}</h2>
+      <h2 className="font-Pretendard font-bold text-2xl">{locateName}</h2>
       <button
         type="button"
         className="w-5 h-5 hover:fill-red-600"

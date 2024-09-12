@@ -1,10 +1,9 @@
 import IntroductionLink from '@/components/introduction-link/introduction-link';
 import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
-import { Spinner } from '@/components/spinner/spinner';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });

@@ -6,6 +6,6 @@ export const getLocal = async (xValue: number, yValue: number) => {
     const data = response.data;
     return data.documents[0].address.region_2depth_name;
   } catch {
-    console.log('에러');
+    throw new Error('주소 정보를 가져오는 도중 오류가 발생했습니다.');
   }
 };
