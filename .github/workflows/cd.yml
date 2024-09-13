@@ -37,7 +37,7 @@ jobs:
 
       - name: Build and Release Docker Image
         run: |
-          docker buildx build --cache-to=type=local,dest=/tmp/.buildx-cache --cache-from=type=local,src=/tmp/.buildx-cache -t ${{ secrets.DOCKERHUB_REPO }} .
+          docker build -t ${{ secrets.DOCKERHUB_REPO }} .
           docker tag ${{ secrets.DOCKERHUB_REPO }}:latest ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}:latest
 
