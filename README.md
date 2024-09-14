@@ -74,3 +74,4 @@ export default function App({ Component, pageProps }: AppProps) {
 
 ## 트러블 슈팅
 - [카카오맵 이동 시 렌더링 오류 해결](https://velog.io/@d_hyeon/카카오-지도-이동-시-렌더링-오류-해결)
+- [네이버 API CORS 오류 해결](https://velog.io/@d_hyeon/네이버-API-CORS-오류-해결)
