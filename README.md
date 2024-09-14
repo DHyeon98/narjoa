@@ -28,16 +28,16 @@
 - TanStack Query의 주요 기능인 Pre-Fetching을 사용하였습니다.
 - 페이지네이션은 사용자가 누를 확률이 높은 곳이기 때문에 Pre-Fetching을 사용하여 사용자 경험을 향상시켰습니다.
 
-### 3. CI/CD
+### 3. 배포 자동화
 <img src="https://github.com/user-attachments/assets/2267caa9-a903-4b86-9a13-a1486253b5ce" width=500/>
 
 - Github Action과 Docker, ec2를 활용한 배포 자동화로, 배포까지의 시간을 단축하였습니다.
 - Workflow에서 타입과 빌드 테스트를 통과하면 Docker로 이미지를 푸시하고 ec2에서 Docker 배포를 하는 파이프라인을 구성하였습니다.
 
-### 4. SEO (검색엔진 최적화), 웹접근성
+### 4. SEO (검색엔진 최적화), 웹 접근성
 <img src="https://github.com/user-attachments/assets/45aaf302-4f2b-408f-8641-b404b72d7f3d" width=500 />
 
-- 검색엔진 최적화를 위해 meta 태그와 시멘틱 태그 등 기본적인 웹접근성을 지키면서 개발을 진행했습니다.
+- 검색엔진 최적화를 위해 meta 태그와 시멘틱 태그 등 기본적인 웹 접근성을 지키면서 개발을 진행했습니다.
 - 결과적으로 구글 상위에 랭크되었으며 위 사진에서 확인할 수 있습니다.
 
 ## 에러 처리
@@ -73,4 +73,4 @@ export default function App({ Component, pageProps }: AppProps) {
 ```
 
 ## 트러블 슈팅
-- 
+- [카카오맵 이동 시 렌더링 오류 해결](https://velog.io/@d_hyeon/카카오-지도-이동-시-렌더링-오류-해결)
