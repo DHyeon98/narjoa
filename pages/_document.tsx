@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 export default function Document() {
   return (
@@ -8,10 +9,10 @@ export default function Document() {
         <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="description" content="사용자 주변의 날씨와 지킴이집, 범죄 기사들을 제공하는 사이트 압니다." />
         <meta name="keywords" content="날씨, 지킴이집, 범죄, 여성, 안전, 날조아, NARJOA, narjoa" />
-        <script
+        <Script
           type="text/javascript"
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&libraries=clusterer`}
-        ></script>
+        ></Script>
         <title>narjoa</title>
       </Head>
       <body>
