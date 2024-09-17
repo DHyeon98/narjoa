@@ -1,4 +1,3 @@
-# 작성중
 ## Narjoa☀️
 <img src="https://github.com/user-attachments/assets/26d7e92a-78c4-4c17-8f1f-4ff63eef1e1b" width=300/>
 
@@ -35,16 +34,16 @@
 - Workflow에서 타입과 빌드 테스트를 통과하면 Docker로 이미지를 푸시하고 ec2에서 Docker 배포를 하는 파이프라인을 구성하였습니다.
 
 ### 4. SEO (검색엔진 최적화), 웹 접근성
-<img src="https://github.com/user-attachments/assets/45aaf302-4f2b-408f-8641-b404b72d7f3d" width=500 />
+<img src="https://github.com/user-attachments/assets/a492f3b7-1e6e-4eaf-9fa7-94ed049aadce" width=500 />
 
-- 검색엔진 최적화를 위해 meta 태그와 시멘틱 태그 등 기본적인 웹 접근성을 지키면서 개발을 진행했습니다.
+- 검색엔진 최적화를 위해 meta 태그와 시맨틱 태그 등 기본적인 웹 접근성을 지키면서 개발을 진행했습니다.
 - 결과적으로 구글 상위에 랭크되었으며 위 사진에서 확인할 수 있습니다.
 
 ## 에러 처리
 
 ### Error-Boundary
 - api 요청마다 에러 처리를 하여 어떤 요청이 실패가 되었는지 사용자가 알아볼 수 있도록 설계하였습니다.
-- 카카오 맵의 경우, 대한민국 권외 클릭시 요청처리가 되지 않게 설계하였습니다. 
+- 카카오 맵의 경우, 대한민국 권외 클릭시 요청처리가 되지 않게 하였습니다.
 ```
 // 날씨 정보 요청
 export const getWeather = async (lat: number, lng: number) => {
@@ -74,3 +73,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
 ## 트러블 슈팅
 - [카카오맵 이동 시 렌더링 오류 해결](https://velog.io/@d_hyeon/카카오-지도-이동-시-렌더링-오류-해결)
+- [네이버 API CORS 오류 해결](https://velog.io/@d_hyeon/네이버-API-CORS-오류-해결)
+- [도커를 활용한 CI/CD 파이프라인](https://velog.io/@d_hyeon/도커를-활용한-CICD-파이프라인)
+- [검색엔진 최적화](https://velog.io/@d_hyeon/Next.js로-검색엔진-최적화-해보기)
