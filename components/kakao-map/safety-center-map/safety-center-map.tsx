@@ -1,7 +1,8 @@
 import { getSafeCenter, SafeCenterType } from '@/apis/map';
+import { customMarkerOption } from '@/constants/custom-marker-current-option';
 import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
 import { Location } from '@/types/local';
-import Script from 'next/script';
+import { createMarker, createMarkerClusterer } from '@/utils/safety-map-utils';
 import { useEffect, useRef, useState } from 'react';
 
 declare global {
@@ -13,19 +14,7 @@ declare global {
 export default function SafetyCenterMap({ location }: Location) {
   const safetyCenterMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
-  const customMarkerOption = {
-    map: map,
-    location: location,
-    size: {
-      width: 50,
-      height: 50,
-    },
-    position: {
-      x: 28,
-      y: 40,
-    },
-  };
-  const customMarker = useCustomMarker(customMarkerOption);
+  const customMarker = useCustomMarker(customMarkerOption(map, location));
 
   const fetchData = async () => {
     const response = await getSafeCenter();
@@ -46,39 +35,9 @@ export default function SafetyCenterMap({ location }: Location) {
       const newMap = new window.kakao.maps.Map(container, options);
       setMap(newMap);
 
-      // 여성안심지킴이집 데이터 패치 후 지도에 마커 표시 및 클러스터
       fetchData().then((data) => {
-        const markers = data.map((center: SafeCenterType) => {
-          const marker = new window.kakao.maps.Marker({
-            position: new window.kakao.maps.LatLng(center.latitude, center.longitude),
-          });
-          const content = `<div class="bg-blue-600 text-center relative -bottom-6 p-2 rounded">
-            <p class="font-Pretendard text-white font-medium">${center.storNm}</p>
-          </div>`;
-
-          const customOverlay = new window.kakao.maps.CustomOverlay({
-            position: marker.getPosition(),
-            content: content,
-          });
-          customOverlay.setMap(null);
-
-          const clickMarker = () =>
-            customOverlay.getMap() ? customOverlay.setMap(null) : customOverlay.setMap(newMap);
-          const clickMap = () => customOverlay.setMap(null);
-
-          window.kakao.maps.event.addListener(marker, 'click', clickMarker);
-          window.kakao.maps.event.addListener(newMap, 'click', clickMap);
-          return marker;
-        });
-
-        const clusterer = new window.kakao.maps.MarkerClusterer({
-          map: newMap,
-          averageCenter: true,
-          minLevel: 10,
-          disableClickZoom: true,
-        });
-
-        clusterer.addMarkers(markers);
+        const markers = data.map((center: SafeCenterType) => createMarker(center, newMap));
+        createMarkerClusterer(newMap, markers);
       });
     });
   }, []);

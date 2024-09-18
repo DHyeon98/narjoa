@@ -1,4 +1,5 @@
 import { HandleLocationType } from '@/components/weather/weather';
+import { customMarkerOption } from '@/constants/custom-marker-current-option';
 import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
 import { OutOfAreaVerification } from '@/utils/out-of-area-verification';
 import { useEffect, useRef, useState } from 'react';
@@ -10,19 +11,7 @@ export default function SelectLocationMap({
   const selectLocationMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [visible, setVisible] = useState(true);
-  const customMarkerOption = {
-    map: map,
-    location: location,
-    size: {
-      width: 30,
-      height: 30,
-    },
-    position: {
-      x: 16,
-      y: 20,
-    },
-  };
-  const customMarker = useCustomMarker(customMarkerOption);
+  const customMarker = useCustomMarker(customMarkerOption(map, location));
 
   useEffect(() => {
     if (!window.kakao) return;
