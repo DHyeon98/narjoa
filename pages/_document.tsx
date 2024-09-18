@@ -10,9 +10,9 @@ export default function Document() {
         <meta name="description" content="사용자 주변의 날씨와 지킴이집, 범죄 기사들을 제공하는 사이트 입니다." />
         <meta name="keywords" content="날씨, 지킴이집, 범죄, 여성, 안전, 날조아, NARJOA, narjoa" />
         <Script
-          type="text/javascript"
-          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&libraries=clusterer`}
-        ></Script>
+          strategy="beforeInteractive"
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=clusterer`}
+        />
         <title>narjoa</title>
       </Head>
       <body>

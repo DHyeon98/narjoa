@@ -1,6 +1,7 @@
 import { getSafeCenter, SafeCenterType } from '@/apis/map';
 import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
 import { Location } from '@/types/local';
+import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
 
 declare global {
@@ -33,50 +34,52 @@ export default function SafetyCenterMap({ location }: Location) {
 
   useEffect(() => {
     if (!window.kakao) return;
+    window.kakao.maps.load(() => {
+      const container = safetyCenterMapRef.current;
+      const options = {
+        center: new window.kakao.maps.LatLng(location.lat, location.lng),
+        level: 5,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        draggable: false,
+      };
+      const newMap = new window.kakao.maps.Map(container, options);
+      setMap(newMap);
 
-    const container = safetyCenterMapRef.current;
-    const options = {
-      center: new window.kakao.maps.LatLng(location.lat, location.lng),
-      level: 5,
-      scrollwheel: false,
-      disableDoubleClickZoom: true,
-      draggable: false,
-    };
-    const newMap = new window.kakao.maps.Map(container, options);
-    setMap(newMap);
+      // 여성안심지킴이집 데이터 패치 후 지도에 마커 표시 및 클러스터
+      fetchData().then((data) => {
+        const markers = data.map((center: SafeCenterType) => {
+          const marker = new window.kakao.maps.Marker({
+            position: new window.kakao.maps.LatLng(center.latitude, center.longitude),
+          });
+          const content = `<div class="bg-blue-600 text-center relative -bottom-6 p-2 rounded">
+            <p class="font-Pretendard text-white font-medium">${center.storNm}</p>
+          </div>`;
 
-    // 여성안심지킴이집 데이터 패치 후 지도에 마커 표시 및 클러스터
-    fetchData().then((data) => {
-      const markers = data.map((center: SafeCenterType) => {
-        const marker = new window.kakao.maps.Marker({
-          position: new window.kakao.maps.LatLng(center.latitude, center.longitude),
+          const customOverlay = new window.kakao.maps.CustomOverlay({
+            position: marker.getPosition(),
+            content: content,
+          });
+          customOverlay.setMap(null);
+
+          const clickMarker = () =>
+            customOverlay.getMap() ? customOverlay.setMap(null) : customOverlay.setMap(newMap);
+          const clickMap = () => customOverlay.setMap(null);
+
+          window.kakao.maps.event.addListener(marker, 'click', clickMarker);
+          window.kakao.maps.event.addListener(newMap, 'click', clickMap);
+          return marker;
         });
-        const content = `<div class="bg-blue-600 text-center relative -bottom-6 p-2 rounded">
-          <p class="font-Pretendard text-white font-medium">${center.storNm}</p>
-        </div>`;
 
-        const customOverlay = new window.kakao.maps.CustomOverlay({
-          position: marker.getPosition(),
-          content: content,
+        const clusterer = new window.kakao.maps.MarkerClusterer({
+          map: newMap,
+          averageCenter: true,
+          minLevel: 10,
+          disableClickZoom: true,
         });
-        customOverlay.setMap(null);
 
-        const clickMarker = () => (customOverlay.getMap() ? customOverlay.setMap(null) : customOverlay.setMap(newMap));
-        const clickMap = () => customOverlay.setMap(null);
-
-        window.kakao.maps.event.addListener(marker, 'click', clickMarker);
-        window.kakao.maps.event.addListener(newMap, 'click', clickMap);
-        return marker;
+        clusterer.addMarkers(markers);
       });
-
-      const clusterer = new window.kakao.maps.MarkerClusterer({
-        map: newMap,
-        averageCenter: true,
-        minLevel: 10,
-        disableClickZoom: true,
-      });
-
-      clusterer.addMarkers(markers);
     });
   }, []);
 

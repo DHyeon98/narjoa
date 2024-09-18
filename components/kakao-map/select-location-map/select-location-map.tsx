@@ -26,14 +26,15 @@ export default function SelectLocationMap({
 
   useEffect(() => {
     if (!window.kakao) return;
-
-    const container = selectLocationMapRef.current;
-    const options = {
-      center: new window.kakao.maps.LatLng(location.lat, location.lng),
-      level: 15,
-    };
-    const newMap = new window.kakao.maps.Map(container, options);
-    setMap(newMap);
+    window.kakao.maps.load(() => {
+      const container = selectLocationMapRef.current;
+      const options = {
+        center: new window.kakao.maps.LatLng(location.lat, location.lng),
+        level: 15,
+      };
+      const newMap = new window.kakao.maps.Map(container, options);
+      setMap(newMap);
+    });
   }, []);
 
   useEffect(() => {
