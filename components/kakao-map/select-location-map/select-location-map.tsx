@@ -4,6 +4,10 @@ import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
 import { OutOfAreaVerification } from '@/utils/out-of-area-verification';
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * 지도에서 위치를 변경할 수 있는 기능을 사용할 수 있습니다.
+ * 지도를 불러오는 함수와 지도 관련 유틸로 구성되어 있습니다.
+ */
 export default function SelectLocationMap({
   location,
   handleChangeLocation,
