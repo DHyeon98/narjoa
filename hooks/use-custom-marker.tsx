@@ -5,11 +5,16 @@ const size = {
   width: 30,
   height: 30,
 };
+
 const position = {
   x: 16,
   y: 20,
 };
 
+/**
+ * 커스텀 마커를 생성하는 커스텀 훅입니다.
+ * 이미지와 사이즈, 위치 값으로 커스텀 마커를 인자로 받은 카카오 맵에 생성합니다.
+ */
 export function useCustomMarker(map: any, location: LocationType) {
   const [customMarker, setCustomMarker] = useState<any>(null);
   useEffect(() => {
