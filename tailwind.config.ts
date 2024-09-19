@@ -21,6 +21,7 @@ const config: Config = {
       },
     },
   },
+  // 커스텀 스타일 추가
   plugins: [
     ({ addUtilities }: any) => {
       addUtilities({
