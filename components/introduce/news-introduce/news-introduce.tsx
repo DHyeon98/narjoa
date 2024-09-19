@@ -2,6 +2,9 @@ import Image from 'next/image';
 import IntroduceSectionCard from '../introduce-section-card/introduce-section-card';
 import NewsImage from '@/public/images/introduce/news.jpg';
 
+/**
+ * 주변 범죄 기사 데이터 제공 서비스를 소개하는 컴포넌트 입니다.
+ */
 export default function NewsIntroduce() {
   return (
     <IntroduceSectionCard title="3. 주변 범죄 관련 기사">

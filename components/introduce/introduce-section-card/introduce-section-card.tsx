@@ -4,6 +4,9 @@ interface IntroduceSectionType extends PropsWithChildren {
   title: string;
 }
 
+/**
+ * 소개 관련 컴포넌트의 공통 디자인을 컴파운드 패턴으로 설계했습니다.
+ */
 export default function IntroduceSectionCard({ title, children }: IntroduceSectionType) {
   return (
     <section className="introduce-bg w-1/2 max-lg:w-full">
