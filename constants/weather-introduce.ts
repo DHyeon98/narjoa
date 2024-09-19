@@ -2,6 +2,9 @@ import Location from '@/public/images/introduce/location.svg';
 import Address from '@/public/images/introduce/address.svg';
 import Weather from '@/public/images/introduce/weather.svg';
 
+/**
+ * 날씨 제공 서비스 소개하는 글을 상수로 관리합니다.
+ */
 export const WEATHER_INTRODUCE_DATA = [
   {
     IconComponent: Location,

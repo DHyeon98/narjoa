@@ -1,6 +1,9 @@
 import Github from '@/public/images/github.svg';
 import Velog from '@/public/images/velog.svg';
 
+/**
+ * 푸터에 들어갈 링크들을 상수로 관리합니다.
+ */
 export const FOOTER_LINK_DATA = [
   {
     IconComponent: Github,
