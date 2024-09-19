@@ -8,15 +8,18 @@ import { useEffect, useState } from 'react';
 export default function Home() {
   const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
 
+  // 현재 위치를 변견하는 기능의 함수입니다.
   const handleChangeLocation = (lat: number, lng: number) => {
     setLocation({ lat: lat, lng: lng });
   };
 
+  // 현재 위치로 변경하는 기능의 함수입니다.
   const handleSetLocation = () =>
     navigator.geolocation.getCurrentPosition((position) => {
       setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
     });
 
+  // 페이지가 렌더링 될 때 현재 위치를 가져오는 코드입니다.
   useEffect(() => {
     handleSetLocation();
   }, []);

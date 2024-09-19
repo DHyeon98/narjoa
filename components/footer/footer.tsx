@@ -1,9 +1,11 @@
-import GithubSVG from '@/public/images/github.svg';
-import VelogSVG from '@/public/images/velog.svg';
 import DhyeonSVG from '@/public/images/dhyeon98_logo.svg';
 import Link from 'next/link';
 import { FOOTER_LINK_DATA } from '@/constants/footer-link';
 
+/**
+ * 푸터 컴포넌트 입니다.
+ * 개발자 로고와 개발자 관련 블로그로 구성되어 있습니다.
+ */
 export default function Footer() {
   return (
     <footer className="py-8 bg-neutral-600 mt-auto">

@@ -1,6 +1,10 @@
 import LogoSvg from '@/public/images/logo.svg';
 import Link from 'next/link';
 
+/**
+ * 헤더 컴포넌트 입니다.
+ * 홈페이지의 로고와 메인 페이지 이동 버튼으로 구성되어있습니다.
+ */
 export default function Header() {
   return (
     <header className="shadow-md">
