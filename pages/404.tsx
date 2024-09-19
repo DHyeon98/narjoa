@@ -1,5 +1,9 @@
 import Link from 'next/link';
 
+/**
+ * 404 페이지 입니다.
+ * 홈으로 이동할 수 있는 버튼과 텍스트로 구성되어 있습니다.
+ */
 export default function NotFound() {
   return (
     <div className="flex-center flex-col mt-auto">

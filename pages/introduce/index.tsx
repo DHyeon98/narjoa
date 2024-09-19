@@ -3,6 +3,10 @@ import SafetyCenterIntroduce from '@/components/introduce/safety-center-introduc
 import WeatherIntroduce from '@/components/introduce/weather-introduce/weather-introduce';
 import Link from 'next/link';
 
+/**
+ * 홈페이지 소개 페이지 입니다.
+ * 홈페이지 소개 관련 컴포넌트와 메인 페이지로 이동할 수 있는 버튼으로 구성되어 있습니다.
+ */
 export default function IntroducePage() {
   return (
     <main className="layout-container">

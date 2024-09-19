@@ -1,23 +1,17 @@
 import { LocationType } from '@/types/local';
 import { useEffect, useState } from 'react';
 
-interface CustomMarkerType {
-  map: any;
-  location: LocationType;
-  size: {
-    width: number;
-    height: number;
-  };
-  position: {
-    x: number;
-    y: number;
-  };
-}
+const size = {
+  width: 30,
+  height: 30,
+};
+const position = {
+  x: 16,
+  y: 20,
+};
 
-export function useCustomMarker(markerOption: CustomMarkerType) {
-  const { map, location, size, position } = markerOption;
+export function useCustomMarker(map: any, location: LocationType) {
   const [customMarker, setCustomMarker] = useState<any>(null);
-
   useEffect(() => {
     if (!window.kakao || !map) return;
 

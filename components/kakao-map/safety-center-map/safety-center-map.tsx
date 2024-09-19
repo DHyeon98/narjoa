@@ -1,6 +1,5 @@
 import { getSafeCenter, SafeCenterType } from '@/apis/map';
-import { customMarkerOption } from '@/constants/custom-marker-current-option';
-import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
+import { useCustomMarker } from '@/hooks/use-custom-marker';
 import { Location } from '@/types/local';
 import { createMarker, createMarkerClusterer } from '@/utils/safety-map-utils';
 import { useEffect, useRef, useState } from 'react';
@@ -18,7 +17,7 @@ declare global {
 export default function SafetyCenterMap({ location }: Location) {
   const safetyCenterMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
-  const customMarker = useCustomMarker(customMarkerOption(map, location));
+  const customMarker = useCustomMarker(map, location);
 
   const fetchData = async () => {
     const response = await getSafeCenter();

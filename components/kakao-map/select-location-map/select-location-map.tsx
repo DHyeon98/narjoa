@@ -1,6 +1,5 @@
 import { HandleLocationType } from '@/components/weather/weather';
-import { customMarkerOption } from '@/constants/custom-marker-current-option';
-import { useCustomMarker } from '@/hooks/custom-marker/use-custom-marker';
+import { useCustomMarker } from '@/hooks/use-custom-marker';
 import { OutOfAreaVerification } from '@/utils/out-of-area-verification';
 import { useEffect, useRef, useState } from 'react';
 
@@ -15,7 +14,7 @@ export default function SelectLocationMap({
   const selectLocationMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [visible, setVisible] = useState(true);
-  const customMarker = useCustomMarker(customMarkerOption(map, location));
+  const customMarker = useCustomMarker(map, location);
 
   // 지도를 로드하는 함수 입니다.
   useEffect(() => {
