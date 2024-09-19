@@ -13,6 +13,7 @@ export default function SelectLocationMap({
   const [visible, setVisible] = useState(true);
   const customMarker = useCustomMarker(customMarkerOption(map, location));
 
+  // 지도를 로드하는 함수 입니다.
   useEffect(() => {
     if (!window.kakao) return;
     window.kakao.maps.load(() => {
@@ -26,11 +27,14 @@ export default function SelectLocationMap({
     });
   }, []);
 
+  // 지도 유틸 관련 함수들 입니다.
   useEffect(() => {
     if (map && location && customMarker) {
+      // location 값이 변했을 때 지도 중앙이 변하는 함수입니다.
       const moveLatLon = new window.kakao.maps.LatLng(location.lat, location.lng);
       map.setCenter(moveLatLon);
 
+      // 대한민국 권외 지역을 클릭했을 때 경고문을 띄워주는 함수입니다.
       const clickListener = (mouseEvent: any) => {
         const latlng = mouseEvent.latLng;
         const lat = latlng.getLat();
@@ -42,9 +46,7 @@ export default function SelectLocationMap({
           alert('지원하지 않는 지역입니다.');
         }
       };
-
       window.kakao.maps.event.addListener(map, 'click', clickListener);
-
       return () => {
         window.kakao.maps.event.removeListener(map, 'click', clickListener);
       };
