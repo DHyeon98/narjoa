@@ -10,6 +10,9 @@ export interface HandleLocationType {
   handleSetLocation: () => void;
 }
 
+/**
+ * 날씨 관련 컴포넌트들로 구성되어 있습니다.
+ */
 export default function Weather({ location, handleChangeLocation, handleSetLocation }: HandleLocationType) {
   return (
     <section className="flex flex-col gap-3 layout-container py-14">

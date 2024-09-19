@@ -2,6 +2,9 @@ import Link from 'next/link';
 import LongArrowSVG from '@/public/images/long_arrow.svg';
 import IntroduceSVG from '@/public/images/introduce_section.svg';
 
+/**
+ * 소개 페이지로 이동하는 버튼이 포함되어 있는 컴포넌트 입니다.
+ */
 export default function IntroductionLink() {
   return (
     <section className="py-14 bg-slate-50">

@@ -1,6 +1,9 @@
 import React from 'react';
 import type { SVGProps } from 'react';
 
+/**
+ * 로딩 상태를 보여줄 스피너 컴포넌트 입니다.
+ */
 export function Spinner(props: SVGProps<SVGSVGElement>) {
   return (
     <div className="w-full h-full flex-center">

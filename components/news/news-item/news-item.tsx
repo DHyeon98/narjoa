@@ -6,6 +6,10 @@ interface NewsItemType {
   newsData: News;
 }
 
+/**
+ * 뉴스의 내용들로 구성된 컴포넌트 입니다.
+ * api 응답이 html 태그 그대로 오기 때문에 dangerouslySetInnerHTML 속성을 사용하여 렌더링 합니다.
+ */
 export default function NewsItem({ newsData }: NewsItemType) {
   const { title, description, link, pubDate } = newsData;
   return (

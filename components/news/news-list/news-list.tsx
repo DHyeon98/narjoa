@@ -6,6 +6,10 @@ interface NewsListType {
   newsData: News[];
 }
 
+/**
+ * 뉴스 리스트를 제공하는 컴포넌트 입니다.
+ * 고유한 key를 위해 uuid 라이브러리를 사용했습니다.
+ */
 export default function NewsList({ newsData }: NewsListType) {
   return (
     <ul>

@@ -11,11 +11,17 @@ interface PaginationType {
   currentPage: number;
 }
 
+/**
+ * 페이지네이션 컴포넌트 입니다.
+ * 페이지네이션 관련 유틸과 이전, 다음 페이지로 가는 버튼 컴포넌트로 구성되어 있습니다.
+ */
 export default function Pagination({ maxPage, handleClickEvents, currentPage }: PaginationType) {
   const [pageNum, setPageNum] = useState(getPageNumbers(currentPage, maxPage));
   const isPreviousDisabled = currentPage === 1;
   const isNextDisabled = currentPage === Math.ceil(maxPage / 5);
 
+  // 이전 페이지 이동과 페이지 숫자를 변경하는 함수입니다.
+  // 만약 현재 페이지가 5로 나누었을 때 1이 남는다면 페이지 이동이 되지 않습니다.
   const handlePrevious = () => {
     handleClickEvents.pageArrowClick('prev');
     if (currentPage % 5 === 1) {
@@ -27,6 +33,8 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
     }
   };
 
+  // 다음 페이지 이동과 페이지 숫자를 변경하는 함수입니다.
+  // 만약 현재 페이지가 5로 나누어 떨어지면 페이지 이동이 되지 않습니다.
   const handleNext = () => {
     handleClickEvents.pageArrowClick('next');
     if (currentPage % 5 === 0) {
@@ -38,6 +46,7 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
     }
   };
 
+  // 최대 페이지 수가 변한다면 페이지네이션의 페이지 수가 변경됩니다.
   useEffect(() => {
     setPageNum(getPageNumbers(currentPage, maxPage));
   }, [maxPage]);

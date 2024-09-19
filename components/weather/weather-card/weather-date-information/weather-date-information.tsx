@@ -10,6 +10,9 @@ export interface WeatherDateInformationType {
   };
 }
 
+/**
+ * 해당하는 날의 날씨와 최저, 최고 온도를 알 수 있는 컴포넌트 입니다.
+ */
 export default function WeatherDateInformation({ informationData }: WeatherDateInformationType) {
   const { weatherId, date, maxTemp, minTemp } = informationData;
   return (

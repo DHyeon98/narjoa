@@ -1,6 +1,10 @@
 import { Location } from '@/types/local';
 import SafetyCenterMap from '../kakao-map/safety-center-map/safety-center-map';
 
+/**
+ * 여성안전지킴이집에 대한 컴포넌트 입니다.
+ * 컴포넌트 관련 소개글과 지도로 구성되어 있습니다.
+ */
 export default function SafetyCenter({ location }: Location) {
   return (
     <section className="py-14 bg-slate-50">

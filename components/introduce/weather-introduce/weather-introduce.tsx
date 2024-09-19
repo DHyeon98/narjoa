@@ -1,5 +1,8 @@
 import { WEATHER_INTRODUCE_DATA } from '@/constants/weather-introduce';
 
+/**
+ * 위치 기반 날씨 데이터 제공 서비스를 소개하는 컴포넌트 입니다.
+ */
 export default function WeatherIntroduce() {
   return (
     <section className="introduce-bg">

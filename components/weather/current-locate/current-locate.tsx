@@ -3,6 +3,9 @@ import SnipeSVG from '@/public/images/snipe.svg';
 import { HandleLocationType } from '../weather';
 import { useGetLocalQuery } from '@/hooks/queries/local';
 
+/**
+ * 설정한 위치 값을 장소명으로 변환하는 컴포넌트 입니다.
+ */
 export default function CurrentLocate({
   location,
   handleSetLocation,

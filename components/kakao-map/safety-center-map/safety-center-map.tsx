@@ -11,6 +11,10 @@ declare global {
   }
 }
 
+/**
+ * 여성안전지킴이 집을 지도로 알려주는 컴포넌트 입니다.
+ * 지도 생성 및 클러스터와 마커를 생성하는 함수로 구성되어 있습니다.
+ */
 export default function SafetyCenterMap({ location }: Location) {
   const safetyCenterMapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
@@ -21,6 +25,7 @@ export default function SafetyCenterMap({ location }: Location) {
     return response.records;
   };
 
+  // 지도 생성 및 마커, 클러스터 생성 함수입니다.
   useEffect(() => {
     if (!window.kakao) return;
     window.kakao.maps.load(() => {
@@ -42,6 +47,7 @@ export default function SafetyCenterMap({ location }: Location) {
     });
   }, []);
 
+  // location 값이 변경됐을 때 지도, 마커의 중앙이 변경되는 함수입니다.
   useEffect(() => {
     if (map && location) {
       const moveLatLon = new window.kakao.maps.LatLng(location.lat, location.lng);

@@ -6,6 +6,9 @@ import Pagination from './pagination/pagination';
 import { MouseEvent, useEffect, useState } from 'react';
 import { Spinner } from '../spinner/spinner';
 
+/**
+ * 뉴스관련 컴포넌트들이 포함된 컴포넌트 입니다.
+ */
 export default function News({ location }: Location) {
   const [currentPage, setCurrentPage] = useState(1);
   const { data: localData, isLoading: localQueryLoading } = useGetLocalQuery(location.lat, location.lng);
@@ -16,6 +19,10 @@ export default function News({ location }: Location) {
     currentPage,
   );
 
+  usePrefetchNews(locateName, currentPage);
+
+  // 컴포넌트로 넘겨줄 클릭 이벤트 함수를 담고 있는 객체 입니다.
+  // 페이지 숫자를 클릭했을 때와 이전, 다음 페이지 클릭시 발생될 이벤트로 구성되어 있습니다.
   const handleClickEvents = {
     pageNumClick: (e: MouseEvent<HTMLButtonElement>) => {
       setCurrentPage(Number(e.currentTarget.value));
@@ -25,11 +32,10 @@ export default function News({ location }: Location) {
     },
   };
 
+  // location 값이 변할 때마다 페이지를 1로 초기화 합니다.
   useEffect(() => {
     setCurrentPage(1);
   }, [location]);
-
-  usePrefetchNews(locateName, currentPage);
 
   if (newsQueryLoading)
     return (

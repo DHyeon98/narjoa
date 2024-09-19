@@ -6,7 +6,11 @@ interface PaginationButtonType {
   ariaLabel: string;
 }
 
+/**
+ * 페이지네이션의 버튼 컴포넌트 입니다.
+ */
 export default function PaginationButton({ isDisabled, handleClick, ariaLabel }: PaginationButtonType) {
+  // disable 상태일때 버튼의 호버와 컬러 조건문 입니다.
   const disabledButtonColor = isDisabled ? 'bg-[#e7e7e7] fill-[#888]' : 'bg-white fill-[#555]';
   const disabledHover = !isDisabled && 'hover:bg-black hover:fill-white';
   return (

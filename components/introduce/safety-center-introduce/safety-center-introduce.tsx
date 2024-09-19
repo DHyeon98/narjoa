@@ -2,6 +2,9 @@ import Image from 'next/image';
 import SafetyImage from '@/public/images/introduce/safety-center-marker.png';
 import IntroduceSectionCard from '../introduce-section-card/introduce-section-card';
 
+/**
+ *
+ */
 export default function SafetyCenterIntroduce() {
   return (
     <IntroduceSectionCard title="2. 여성안심지킴이집 위치 제공">
