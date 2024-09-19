@@ -1,3 +1,6 @@
+/**
+ * 날짜 데이터를 받고 리턴되는 값으로 포맷하는 유틸입니다.
+ */
 export function formatDate(originDate: Date) {
   const date = new Date(originDate);
   const year = date.getFullYear();

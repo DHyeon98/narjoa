@@ -3,8 +3,8 @@ import SnowSVG from '@/public/images/snow.svg';
 import SunnySVG from '@/public/images/sunny.svg';
 import CloudySVG from '@/public/images/cloudy.svg';
 
-// 날씨 코드를 아이콘으로 변환하는 함수입니다.
-export function conversionWeatherCode(code: number) {
+// 날씨 코드를 아이콘으로 변환하는 유틸입니다.
+export const conversionWeatherCode = (code: number) => {
   switch (true) {
     case code === 200 || code === 201 || code === 202:
       return <RainSVG width="100%" height="100%" viewBox="0 0 48 48" aria-label="비" />;
@@ -23,4 +23,4 @@ export function conversionWeatherCode(code: number) {
     default:
       return <CloudySVG width="100%" height="100%" viewBox="0 0 48 48" aria-label="흐림" />;
   }
-}
+};
