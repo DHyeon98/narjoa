@@ -13,7 +13,6 @@ export default function Document() {
           strategy="beforeInteractive"
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=clusterer`}
         />
-        <title>narjoa</title>
       </Head>
       <body>
         <Main />

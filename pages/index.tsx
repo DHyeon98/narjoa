@@ -3,6 +3,7 @@ import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -25,11 +26,20 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-      <Weather handleSetLocation={handleSetLocation} location={location} handleChangeLocation={handleChangeLocation} />
-      <SafetyCenter location={location} />
-      <News location={location} />
-      <IntroductionLink />
-    </main>
+    <>
+      <Head>
+        <title>narjoa</title>
+      </Head>
+      <main>
+        <Weather
+          handleSetLocation={handleSetLocation}
+          location={location}
+          handleChangeLocation={handleChangeLocation}
+        />
+        <SafetyCenter location={location} />
+        <News location={location} />
+        <IntroductionLink />
+      </main>
+    </>
   );
 }
