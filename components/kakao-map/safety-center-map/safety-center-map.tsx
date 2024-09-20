@@ -32,9 +32,6 @@ export default function SafetyCenterMap({ location }: Location) {
       const options = {
         center: new window.kakao.maps.LatLng(location.lat, location.lng),
         level: 5,
-        scrollwheel: false,
-        disableDoubleClickZoom: true,
-        draggable: false,
       };
       const newMap = new window.kakao.maps.Map(container, options);
       setMap(newMap);

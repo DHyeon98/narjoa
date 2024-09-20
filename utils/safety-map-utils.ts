@@ -11,7 +11,7 @@ export const createMarker = (center: SafeCenterType, map: any) => {
 
   const content = `
     <div class="bg-blue-600 text-center relative -bottom-6 p-2 rounded">
-      <p class="font-Pretendard text-white font-medium">${center.storNm}</p>
+      <p class="bg-blue-600 font-Pretendard text-white font-medium">${center.storNm}</p>
     </div>
   `;
 
@@ -23,9 +23,7 @@ export const createMarker = (center: SafeCenterType, map: any) => {
   customOverlay.setMap(null);
 
   // 마커가 클릭됐을 때 해당하는 커스텀 오버레이를 보여줍니다.
-  const clickMarker = () => {
-    customOverlay.getMap() ? customOverlay.setMap(null) : customOverlay.setMap(map);
-  };
+  const clickMarker = () => (customOverlay.getMap() ? customOverlay.setMap(null) : customOverlay.setMap(map));
 
   // 지도가 클릭됐을때 생성된 커스텀 오버레이를 제거합니다.
   const clickMap = () => customOverlay.setMap(null);
@@ -33,7 +31,7 @@ export const createMarker = (center: SafeCenterType, map: any) => {
   window.kakao.maps.event.addListener(marker, 'click', clickMarker);
   window.kakao.maps.event.addListener(map, 'click', clickMap);
 
-  return { marker, customOverlay };
+  return { marker };
 };
 
 /**
