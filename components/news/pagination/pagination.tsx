@@ -52,29 +52,31 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
   }, [maxPage]);
 
   return (
-    <ul className="flex gap-5 items-center max-md:gap-3">
-      <li className="rotate-180">
-        <PaginationButton isDisabled={isPreviousDisabled} handleClick={handlePrevious} ariaLabel="이전 페이지" />
-      </li>
-      {pageNum.map((pageNumber) => {
-        return (
-          <li key={pageNumber}>
-            <button
-              className={`w-[34px] h-[34px] hover:underline ${
-                currentPage === pageNumber && `bg-black text-white rounded-full font-bold`
-              } max-md:w-[28px] max-md:h-[28px] max-md:text-sm`}
-              type="button"
-              value={pageNumber}
-              onClick={handleClickEvents.pageNumClick}
-            >
-              {pageNumber}
-            </button>
-          </li>
-        );
-      })}
-      <li className="flex ">
-        <PaginationButton isDisabled={isNextDisabled} handleClick={handleNext} ariaLabel="다음 페이지" />
-      </li>
-    </ul>
+    <div className="flex justify-center mt-4">
+      <ul className="flex gap-5 items-center max-md:gap-3">
+        <li className="rotate-180">
+          <PaginationButton isDisabled={isPreviousDisabled} handleClick={handlePrevious} ariaLabel="이전 페이지" />
+        </li>
+        {pageNum.map((pageNumber) => {
+          return (
+            <li key={pageNumber}>
+              <button
+                className={`w-[34px] h-[34px] hover:underline ${
+                  currentPage === pageNumber && `bg-black text-white rounded-full font-bold`
+                } max-md:w-[28px] max-md:h-[28px] max-md:text-sm`}
+                type="button"
+                value={pageNumber}
+                onClick={handleClickEvents.pageNumClick}
+              >
+                {pageNumber}
+              </button>
+            </li>
+          );
+        })}
+        <li className="flex ">
+          <PaginationButton isDisabled={isNextDisabled} handleClick={handleNext} ariaLabel="다음 페이지" />
+        </li>
+      </ul>
+    </div>
   );
 }
