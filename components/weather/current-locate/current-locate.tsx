@@ -1,7 +1,6 @@
-// import { useGetLocalQuery } from '@/hooks/queries/local';
 import SnipeSVG from '@/public/images/snipe.svg';
 import { HandleLocationType } from '../weather';
-import { useGetLocalQuery } from '@/hooks/queries/local';
+import { useGetLocalSuspenseQuery } from '@/hooks/queries/local';
 
 /**
  * 설정한 위치 값을 장소명으로 변환하는 컴포넌트 입니다.
@@ -10,11 +9,10 @@ export default function CurrentLocate({
   location,
   handleSetLocation,
 }: Omit<HandleLocationType, 'handleChangeLocation'>) {
-  const { data } = useGetLocalQuery(location.lat, location.lng);
-  const locateName = data ? data : '알수없음';
+  const { data } = useGetLocalSuspenseQuery(location.lat, location.lng);
   return (
     <div className="flex items-center gap-2">
-      <h2 className="font-Pretendard font-bold text-2xl">{locateName}</h2>
+      <h2 className="font-Pretendard font-bold text-2xl">{data}</h2>
       <button
         type="button"
         className="w-5 h-5 hover:fill-red-600"

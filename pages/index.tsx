@@ -1,10 +1,12 @@
+import { getNews } from '@/apis/news';
 import IntroductionLink from '@/components/introduction-link/introduction-link';
 import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
+import { Spinner } from '@/components/spinner/spinner';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
 import Head from 'next/head';
-import { startTransition, useEffect, useState } from 'react';
+import { startTransition, Suspense, useEffect, useState } from 'react';
 
 export default function Home() {
   const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
@@ -21,6 +23,7 @@ export default function Home() {
     navigator.geolocation.getCurrentPosition((position) => {
       handleChangeLocation(position.coords.latitude, position.coords.longitude);
     });
+
   // 페이지가 렌더링 될 때 현재 위치를 가져오는 코드입니다.
   useEffect(() => {
     handleSetLocation();
@@ -38,7 +41,11 @@ export default function Home() {
           handleChangeLocation={handleChangeLocation}
         />
         <SafetyCenter location={location} />
-        <News location={location} />
+        <div className="min-h-[400px] flex-center">
+          <Suspense fallback={<Spinner />}>
+            <News location={location} />
+          </Suspense>
+        </div>
         <IntroductionLink />
       </main>
     </>

@@ -1,7 +1,5 @@
 import { useGetLocalQuery } from '@/hooks/queries/local';
 import { Location } from '@/types/local';
-import { Suspense } from 'react';
-import { Spinner } from '../spinner/spinner';
 import NewsComponents from './news-components/news-components';
 
 /**
@@ -9,16 +7,13 @@ import NewsComponents from './news-components/news-components';
  */
 export default function News({ location }: Location) {
   const { data, isLoading } = useGetLocalQuery(location.lat, location.lng);
-  const locateName = data ? data : '중구';
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return null;
   return (
     <section className="layout-container py-14 flex flex-col">
       <article className="w-3/5 max-lg:w-4/5 max-md:w-full">
-        <h2 className="font-bold text-2xl text-[#0c5cb1] max-md:text-xl">{locateName} 범죄 관련 기사</h2>
-        <Suspense fallback={<Spinner />}>
-          <NewsComponents locateName={locateName} location={location} />
-        </Suspense>
+        <h2 className="font-bold text-2xl text-[#0c5cb1] max-md:text-xl">{data} 범죄 관련 기사</h2>
+        <NewsComponents locateName={data} location={location} />
       </article>
     </section>
   );

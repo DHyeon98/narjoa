@@ -3,7 +3,6 @@ import WeatherDateInformation from './weather-date-information/weather-date-info
 import WeatherTodayInformation from './weather-today-information/weather-today-information';
 import { Location } from '@/types/local';
 import { DailyType } from '@/types/weather/daily';
-import { Spinner } from '@/components/spinner/spinner';
 
 /**
  * 날씨 데이터를 시각적으로 보여주는 컴포넌트 입니다.
