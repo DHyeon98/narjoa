@@ -17,6 +17,7 @@ const position = {
  */
 export function useCustomMarker(map: any, location: LocationType) {
   const [customMarker, setCustomMarker] = useState<any>(null);
+
   useEffect(() => {
     if (!window.kakao || !map) return;
 

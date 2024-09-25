@@ -1,15 +1,17 @@
 import { conversionWeatherCode } from '@/utils/conversion-weather-code';
-import { Location } from '@/types/local';
-import { useGetWeatherQuery } from '@/hooks/queries/weather';
+import { CurrentType } from '@/types/weather/current';
+import { DailyType } from '@/types/weather/daily';
+
+interface WeatherTodayInformationType {
+  current: CurrentType;
+  daily: DailyType[];
+}
 
 /**
  * 오늘의 날씨 정보를 알려주는 컴포넌트 입니다.
  * 현재 온도, 체감온도, 날씨, 최저 온도, 최고 온도, 예상 강수량을 알 수 있습니다.
  */
-export default function WeatherTodayInformation({ location }: Location) {
-  const { data } = useGetWeatherQuery(location.lat, location.lng);
-  const { daily } = data;
-  const { current } = data;
+export default function WeatherTodayInformation({ daily, current }: WeatherTodayInformationType) {
   const expectRain = daily[0].rain ? daily[0].rain : 0;
   return (
     <div>

@@ -11,6 +11,7 @@ export interface DailyType {
   moonset: number;
   pop: number;
   pressure: number;
+  rain: number;
   summary: string;
   sunrise: number;
   sunset: number;

@@ -3,6 +3,8 @@ import { LocationType } from '@/types/local';
 import SelectLocationMap from '../kakao-map/select-location-map/select-location-map';
 import WeatherTable from './wearher-table/weather-table';
 import CurrentLocate from './current-locate/current-locate';
+import { Suspense } from 'react';
+import { Spinner } from '../spinner/spinner';
 
 export interface HandleLocationType {
   location: LocationType;
@@ -21,11 +23,15 @@ export default function Weather({ location, handleChangeLocation, handleSetLocat
         <div className="flex gap-4 lg:w-1/2 w-full max-md:flex-col">
           <SelectLocationMap location={location} handleChangeLocation={handleChangeLocation} />
           <article className="w-[340px] flex-shrink-0 max-lg:w-1/2 max-md:w-full">
-            <WeatherCard location={location} />
+            <Suspense fallback={<Spinner />}>
+              <WeatherCard location={location} />
+            </Suspense>
           </article>
         </div>
         <article className="w-1/2 max-lg:w-full">
-          <WeatherTable location={location} />
+          <Suspense fallback={<Spinner />}>
+            <WeatherTable location={location} />
+          </Suspense>
         </article>
       </div>
     </section>
