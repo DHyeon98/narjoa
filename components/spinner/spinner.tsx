@@ -5,8 +5,9 @@ import type { SVGProps } from 'react';
  * 로딩 상태를 보여줄 스피너 컴포넌트 입니다.
  */
 export function Spinner(props: SVGProps<SVGSVGElement>) {
+  const { width } = props;
   return (
-    <div className="w-full h-full flex-center">
+    <div className={`max-w-[${width}] w-full h-full flex-center`}>
       <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" {...props}>
         <g stroke="currentColor">
           <circle cx={12} cy={12} r={9.5} fill="none" strokeLinecap="round" strokeWidth={3}>

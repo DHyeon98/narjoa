@@ -22,14 +22,14 @@ export default function Weather({ location, handleChangeLocation, handleSetLocat
       <div className="flex flex-grow gap-4 max-lg:flex-wrap">
         <div className="flex gap-4 lg:w-1/2 w-full max-md:flex-col">
           <SelectLocationMap location={location} handleChangeLocation={handleChangeLocation} />
-          <article className="w-[340px] flex-shrink-0 max-lg:w-1/2 max-md:w-full">
-            <Suspense fallback={<Spinner />}>
+          <article className="w-[340px] max-lg:w-1/2 max-md:w-full">
+            <Suspense fallback={<Spinner width="340px" />}>
               <WeatherCard location={location} />
             </Suspense>
           </article>
         </div>
         <article className="w-1/2 max-lg:w-full">
-          <Suspense fallback={<Spinner />}>
+          <Suspense fallback={<Spinner width="696px" />}>
             <WeatherTable location={location} />
           </Suspense>
         </article>

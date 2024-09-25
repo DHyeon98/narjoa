@@ -4,22 +4,23 @@ import SafetyCenter from '@/components/safety-center/safety-center';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { startTransition, useEffect, useState } from 'react';
 
 export default function Home() {
   const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
 
   // 현재 위치를 변견하는 기능의 함수입니다.
   const handleChangeLocation = (lat: number, lng: number) => {
-    setLocation({ lat: lat, lng: lng });
+    startTransition(() => {
+      setLocation({ lat, lng });
+    });
   };
 
   // 현재 위치로 변경하는 기능의 함수입니다.
   const handleSetLocation = () =>
     navigator.geolocation.getCurrentPosition((position) => {
-      setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
+      handleChangeLocation(position.coords.latitude, position.coords.longitude);
     });
-
   // 페이지가 렌더링 될 때 현재 위치를 가져오는 코드입니다.
   useEffect(() => {
     handleSetLocation();

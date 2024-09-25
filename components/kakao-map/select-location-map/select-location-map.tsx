@@ -56,7 +56,7 @@ export default function SelectLocationMap({
     }
   }, [location, map, customMarker]);
   return (
-    <div className="w-1/2 h-[220px] bg-slate-300 relative max-md:w-full">
+    <div className=" w-1/2 h-[220px] bg-slate-300 relative max-md:w-full">
       <div className="h-full">
         <div ref={selectLocationMapRef} style={{ width: '100%', height: '100%' }} />
       </div>
