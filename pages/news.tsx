@@ -18,6 +18,5 @@ export default function NewsPage({ dataTest }: any) {
     queryFn: () => getWeather(36.7853568, 127.1365632),
     initialData: dataTest,
   });
-  console.log(data, dataTest);
-  return <div>s</div>;
+  return <div>{dataTest.lat}</div>;
 }
