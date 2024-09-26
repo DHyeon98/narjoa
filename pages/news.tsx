@@ -1,6 +1,7 @@
 // pages/news.tsx
 import { getNews } from '@/apis/news';
 import { getWeather } from '@/apis/weather';
+import { useQuery } from '@tanstack/react-query';
 
 export async function getServerSideProps() {
   try {
@@ -12,6 +13,11 @@ export async function getServerSideProps() {
 }
 
 export default function NewsPage({ dataTest }: any) {
-  console.log(dataTest);
+  const { data } = useQuery({
+    queryKey: ['weather', 36.7853568, 127.1365632],
+    queryFn: () => getWeather(36.7853568, 127.1365632),
+    initialData: dataTest,
+  });
+  console.log(data, dataTest);
   return <div>s</div>;
 }
