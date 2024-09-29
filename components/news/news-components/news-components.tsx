@@ -2,8 +2,8 @@ import { useGetNewsQuery, usePrefetchNews } from '@/hooks/queries/news';
 import { MouseEvent, useEffect, useState } from 'react';
 import NewsList from '../news-list/news-list';
 import Pagination from '../pagination/pagination';
-import { Spinner } from '@/components/spinner/spinner';
 import { LocationType } from '@/types/local';
+import { Spinner } from '@/components/spinner/spinner';
 
 interface NewsComponentsType {
   locateName: string;
@@ -12,8 +12,7 @@ interface NewsComponentsType {
 
 export default function NewsComponents({ locateName, location }: NewsComponentsType) {
   const [currentPage, setCurrentPage] = useState(1);
-
-  const { data } = useGetNewsQuery(locateName, currentPage);
+  const { data, isLoading } = useGetNewsQuery(locateName, currentPage);
 
   // 컴포넌트로 넘겨줄 클릭 이벤트 함수를 담고 있는 객체 입니다.
   // 페이지 숫자를 클릭했을 때와 이전, 다음 페이지 클릭시 발생될 이벤트로 구성되어 있습니다.
@@ -33,12 +32,12 @@ export default function NewsComponents({ locateName, location }: NewsComponentsT
     setCurrentPage(1);
   }, [location]);
 
-  //   if (isLoading)
-  //     return (
-  //       <div className="layout-container max-w-[700px] h-[700px]">
-  //         <Spinner />
-  //       </div>
-  //     );
+  if (isLoading)
+    return (
+      <div className="min-h-[400px] flex-center">
+        <Spinner />
+      </div>
+    );
   return (
     <>
       <NewsList newsData={data.items} />
