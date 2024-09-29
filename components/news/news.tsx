@@ -1,4 +1,4 @@
-import { useGetLocalSuspenseQuery } from '@/hooks/queries/local';
+import { useGetLocalQuery, useGetLocalSuspenseQuery } from '@/hooks/queries/local';
 import { Location } from '@/types/local';
 import NewsComponents from './news-components/news-components';
 
@@ -6,8 +6,9 @@ import NewsComponents from './news-components/news-components';
  * 뉴스관련 컴포넌트들이 포함된 컴포넌트 입니다.
  */
 export default function News({ location }: Location) {
-  const { data } = useGetLocalSuspenseQuery(location.lat, location.lng);
+  const { data, isLoading } = useGetLocalQuery(location.lat, location.lng);
 
+  if (isLoading) return null;
   return (
     <section className="layout-container py-14 flex flex-col">
       <article className="w-3/5 max-lg:w-4/5 max-md:w-full">

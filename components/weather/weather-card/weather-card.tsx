@@ -8,9 +8,11 @@ import { DailyType } from '@/types/weather/daily';
  * 날씨 데이터를 시각적으로 보여주는 컴포넌트 입니다.
  */
 export default function WeatherCard({ location }: Location) {
-  const { data } = useGetWeatherQuery(location.lat, location.lng);
+  const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
+  if (isLoading) return null;
   const { daily } = data;
   const { current } = data;
+
   return (
     <div className="flex flex-col gap-3">
       <WeatherTodayInformation daily={daily} current={current} />

@@ -16,7 +16,7 @@ export const useGetLocalQuery = (lat: number, lng: number) => {
 };
 
 export const useGetLocalSuspenseQuery = (lat: number, lng: number) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: ['localSuspense', lat, lng],
     queryFn: () => getLocal(lng, lat),
   });

@@ -1,5 +1,5 @@
 import { getWeather } from '@/apis/weather';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 
 export interface weatherType {
   baseDate: Date;
@@ -16,7 +16,7 @@ export interface weatherType {
  * 날씨 데이터를 가져오는 훅입니다.
  */
 export const useGetWeatherQuery = (lat: number, lng: number) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: ['weather', lat, lng],
     queryFn: () => getWeather(lat, lng),
   });

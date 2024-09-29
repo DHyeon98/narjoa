@@ -67,9 +67,7 @@ export default function Home({ dehydratedState }: { dehydratedState: DehydratedS
         />
         <SafetyCenter location={location} />
         <div className="min-h-[400px] flex-center">
-          <Suspense fallback={<Spinner width="696px" />}>
-            <News location={location} />
-          </Suspense>
+          <News location={location} />
         </div>
         <IntroductionLink />
       </main>
