@@ -1,14 +1,14 @@
 import { getLocal } from '@/apis/local';
-import { getNews } from '@/apis/news';
 import { getWeather } from '@/apis/weather';
 import IntroductionLink from '@/components/introduction-link/introduction-link';
 import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
+import { Spinner } from '@/components/spinner/spinner';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
 import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import Head from 'next/head';
-import { startTransition, useEffect, useState } from 'react';
+import { startTransition, Suspense, useEffect, useState } from 'react';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
@@ -66,7 +66,11 @@ export default function Home({ dehydratedState }: { dehydratedState: DehydratedS
           handleChangeLocation={handleChangeLocation}
         />
         <SafetyCenter location={location} />
-        <News location={location} />
+        <div className="min-h-[400px] flex-center">
+          <Suspense fallback={<Spinner width="696px" />}>
+            <News location={location} />
+          </Suspense>
+        </div>
         <IntroductionLink />
       </main>
     </HydrationBoundary>

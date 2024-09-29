@@ -45,9 +45,7 @@ export default function SelectLocationMap({
         if (OutOfAreaVerification(lat, lng)) {
           handleChangeLocation(lat, lng);
           customMarker.setPosition(latlng);
-        } else {
-          alert('지원하지 않는 지역입니다.');
-        }
+        } else alert('지원하지 않는 지역입니다.');
       };
       window.kakao.maps.event.addListener(map, 'click', clickListener);
       return () => {
