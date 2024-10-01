@@ -1,9 +1,5 @@
 FROM node:18
 
-RUN apt-get update && apt-get install -y tzdata && \
-    ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
-    echo "Asia/Seoul" > /etc/timezone
-
 # 작업 디렉토리를 설정합니다.
 WORKDIR /usr/src/app
 
