@@ -3,12 +3,11 @@ import { getWeather } from '@/apis/weather';
 import IntroductionLink from '@/components/introduction-link/introduction-link';
 import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
-import { Spinner } from '@/components/spinner/spinner';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
 import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import Head from 'next/head';
-import { startTransition, Suspense, useEffect, useState } from 'react';
+import { startTransition, useEffect, useState } from 'react';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();

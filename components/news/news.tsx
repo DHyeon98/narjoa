@@ -1,4 +1,4 @@
-import { useGetLocalQuery, useGetLocalSuspenseQuery } from '@/hooks/queries/local';
+import { useGetLocalQuery } from '@/hooks/queries/local';
 import { Location } from '@/types/local';
 import NewsComponents from './news-components/news-components';
 
