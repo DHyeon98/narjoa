@@ -16,12 +16,10 @@ export async function getServerSideProps() {
     await queryClient.prefetchQuery({
       queryKey: ['weather', 37.56100278, 126.9996417],
       queryFn: () => getWeather(37.56100278, 126.9996417),
-      staleTime: 0,
     });
     await queryClient.prefetchQuery({
       queryKey: ['local', 37.56100278, 126.9996417],
       queryFn: () => getLocal(126.9996417, 37.56100278),
-      staleTime: 0,
     });
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -31,6 +29,7 @@ export async function getServerSideProps() {
     props: {
       dehydratedState: dehydrate(queryClient),
     },
+    revalidate: 10,
   };
 }
 
