@@ -9,6 +9,7 @@ export const newsInstance = axios.create({
 
 export const weatherInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_WEATHER_URL,
+  headers: {},
 });
 
 export const localInstance = axios.create({

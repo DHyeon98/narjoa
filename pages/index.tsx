@@ -12,23 +12,24 @@ import { startTransition, useEffect, useState } from 'react';
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  queryClient.invalidateQueries({ queryKey: ['weather', 37.56100278, 126.9996417] });
-  queryClient.invalidateQueries({ queryKey: ['local', 37.56100278, 126.9996417] });
-
   try {
     await Promise.all([
       queryClient.prefetchQuery({
         queryKey: ['weather', 37.56100278, 126.9996417],
         queryFn: () => getWeather(37.56100278, 126.9996417),
+        staleTime: 0,
       }),
       queryClient.prefetchQuery({
         queryKey: ['local', 37.56100278, 126.9996417],
         queryFn: () => getLocal(126.9996417, 37.56100278),
+        staleTime: 0,
       }),
     ]);
+    const dateTest = new Date(Date.now()).toISOString();
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
+        dateTest,
       },
     };
   } catch (error) {
@@ -39,7 +40,8 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({ dehydratedState }: { dehydratedState: DehydratedState }) {
+export default function Home({ dehydratedState, dateTest }: any) {
+  console.log(dateTest);
   const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
 
   // 현재 위치를 변견하는 기능의 함수입니다.
