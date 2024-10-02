@@ -11,16 +11,18 @@ import { startTransition, useEffect, useState } from 'react';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
-  const timestamp = Date.now();
+
+  queryClient.invalidateQueries({ queryKey: ['weather', 37.56100278, 126.9996417] });
+  queryClient.invalidateQueries({ queryKey: ['local', 37.56100278, 126.9996417] });
 
   try {
     await Promise.all([
       queryClient.prefetchQuery({
-        queryKey: ['weather', 37.56100278, 126.9996417, timestamp],
+        queryKey: ['weather', 37.56100278, 126.9996417],
         queryFn: () => getWeather(37.56100278, 126.9996417),
       }),
       queryClient.prefetchQuery({
-        queryKey: ['local', 37.56100278, 126.9996417, timestamp],
+        queryKey: ['local', 37.56100278, 126.9996417],
         queryFn: () => getLocal(126.9996417, 37.56100278),
       }),
     ]);
