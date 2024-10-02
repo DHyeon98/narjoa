@@ -5,34 +5,27 @@ import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
 import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
-import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import Head from 'next/head';
 import { startTransition, useEffect, useState } from 'react';
 
 export async function getServerSideProps() {
-  const queryClient = new QueryClient();
-
   try {
-    await queryClient.prefetchQuery({
-      queryKey: ['weather', 37.56100278, 126.9996417],
-      queryFn: () => getWeather(37.56100278, 126.9996417),
-    });
-    await queryClient.prefetchQuery({
-      queryKey: ['local', 37.56100278, 126.9996417],
-      queryFn: () => getLocal(126.9996417, 37.56100278),
-    });
+    const weatherData = await getWeather(37.56100278, 126.9996417);
+    const localeData = await getLocal(126.9996417, 37.56100278);
+    return {
+      props: {
+        initialData: {
+          weatherData,
+          localeData,
+        },
+      },
+    };
   } catch (error) {
     console.error('Error fetching data:', error);
   }
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
 }
 
-export default function Home({ dehydratedState }: { dehydratedState: DehydratedState }) {
+export default function Home({ initialData }: any) {
   const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
 
   // 현재 위치를 변견하는 기능의 함수입니다.
@@ -54,7 +47,7 @@ export default function Home({ dehydratedState }: { dehydratedState: DehydratedS
   }, []);
 
   return (
-    <HydrationBoundary state={dehydratedState}>
+    <>
       <Head>
         <title>narjoa</title>
       </Head>
@@ -63,13 +56,14 @@ export default function Home({ dehydratedState }: { dehydratedState: DehydratedS
           handleSetLocation={handleSetLocation}
           location={location}
           handleChangeLocation={handleChangeLocation}
+          initialData={initialData}
         />
         <SafetyCenter location={location} />
         <div className="min-h-[400px] flex-center">
-          <News location={location} />
+          <News location={location} initialData={initialData.localeData} />
         </div>
         <IntroductionLink />
       </main>
-    </HydrationBoundary>
+    </>
   );
 }

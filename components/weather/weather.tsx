@@ -15,19 +15,19 @@ export interface HandleLocationType {
 /**
  * 날씨 관련 컴포넌트들로 구성되어 있습니다.
  */
-export default function Weather({ location, handleChangeLocation, handleSetLocation }: HandleLocationType) {
+export default function Weather({ location, handleChangeLocation, handleSetLocation, initialData }: any) {
   return (
     <section className="flex flex-col gap-3 layout-container py-14">
-      <CurrentLocate location={location} handleSetLocation={handleSetLocation} />
+      <CurrentLocate location={location} handleSetLocation={handleSetLocation} localeData={initialData.localeData} />
       <div className="flex flex-grow gap-4 max-lg:flex-wrap">
         <div className="flex gap-4 lg:w-1/2 w-full max-md:flex-col">
           <SelectLocationMap location={location} handleChangeLocation={handleChangeLocation} />
           <article className="w-[340px] max-lg:w-1/2 max-md:w-full">
-            <WeatherCard location={location} />
+            <WeatherCard location={location} initialData={initialData.weatherData} />
           </article>
         </div>
         <article className="w-1/2 max-lg:w-full">
-          <WeatherTable location={location} />
+          <WeatherTable location={location} initialData={initialData.weatherData} />
         </article>
       </div>
     </section>

@@ -5,11 +5,8 @@ import { useGetLocalQuery } from '@/hooks/queries/local';
 /**
  * 설정한 위치 값을 장소명으로 변환하는 컴포넌트 입니다.
  */
-export default function CurrentLocate({
-  location,
-  handleSetLocation,
-}: Omit<HandleLocationType, 'handleChangeLocation'>) {
-  const { data, isLoading } = useGetLocalQuery(location.lat, location.lng);
+export default function CurrentLocate({ location, handleSetLocation, localeData }: any) {
+  const { data, isLoading } = useGetLocalQuery(location.lat, location.lng, localeData);
 
   if (isLoading) return null;
   return (

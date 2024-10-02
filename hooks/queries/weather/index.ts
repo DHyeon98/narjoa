@@ -15,10 +15,10 @@ export interface weatherType {
 /**
  * 날씨 데이터를 가져오는 훅입니다.
  */
-export const useGetWeatherQuery = (lat: number, lng: number) => {
+export const useGetWeatherQuery = (lat: number, lng: number, initialData: any) => {
   return useQuery({
     queryKey: ['weather', lat, lng],
     queryFn: () => getWeather(lat, lng),
-    staleTime: 5 * 60 * 1000,
+    initialData: initialData,
   });
 };
