@@ -8,5 +8,6 @@ export const useGetLocalQuery = (lat: number, lng: number) => {
   return useQuery({
     queryKey: ['local', lat, lng],
     queryFn: () => getLocal(lng, lat),
+    staleTime: 5 * 60 * 1000,
   });
 };

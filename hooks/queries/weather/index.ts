@@ -19,5 +19,6 @@ export const useGetWeatherQuery = (lat: number, lng: number) => {
   return useQuery({
     queryKey: ['weather', lat, lng],
     queryFn: () => getWeather(lat, lng),
+    staleTime: 5 * 60 * 1000,
   });
 };
