@@ -13,8 +13,8 @@ export interface FilterDataType {
 /**
  * 현재 시각으로 부터 5시간의 시간, 날씨, 기온을 알 수 있는 table 컴포넌트 입니다.
  */
-export default function WeatherTable({ location, initialData }: any) {
-  const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng, initialData);
+export default function WeatherTable({ location }: Location) {
+  const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
   if (isLoading) return null;
 
   const filterData = data.hourly.slice(0, 5);

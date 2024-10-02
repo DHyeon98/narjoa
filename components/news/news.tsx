@@ -5,8 +5,8 @@ import NewsComponents from './news-components/news-components';
 /**
  * 뉴스관련 컴포넌트들이 포함된 컴포넌트 입니다.
  */
-export default function News({ location, localeData }: any) {
-  const { data, isLoading } = useGetLocalQuery(location.lat, location.lng, localeData);
+export default function News({ location }: Location) {
+  const { data, isLoading } = useGetLocalQuery(location.lat, location.lng);
 
   if (isLoading) return null;
   return (
