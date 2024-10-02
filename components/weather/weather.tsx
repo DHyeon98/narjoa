@@ -3,8 +3,6 @@ import { LocationType } from '@/types/local';
 import SelectLocationMap from '../kakao-map/select-location-map/select-location-map';
 import WeatherTable from './wearher-table/weather-table';
 import CurrentLocate from './current-locate/current-locate';
-import { Suspense } from 'react';
-import { Spinner } from '../spinner/spinner';
 
 export interface HandleLocationType {
   location: LocationType;

@@ -10,22 +10,17 @@ import Head from 'next/head';
 import { startTransition, useEffect, useState } from 'react';
 
 export async function getServerSideProps() {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 1000 * 60,
-      },
-    },
-  });
+  const queryClient = new QueryClient();
+  const timestamp = Date.now();
 
   try {
     await Promise.all([
       queryClient.prefetchQuery({
-        queryKey: ['weather', 37.56100278, 126.9996417],
+        queryKey: ['weather', 37.56100278, 126.9996417, timestamp],
         queryFn: () => getWeather(37.56100278, 126.9996417),
       }),
       queryClient.prefetchQuery({
-        queryKey: ['local', 37.56100278, 126.9996417],
+        queryKey: ['local', 37.56100278, 126.9996417, timestamp],
         queryFn: () => getLocal(126.9996417, 37.56100278),
       }),
     ]);
