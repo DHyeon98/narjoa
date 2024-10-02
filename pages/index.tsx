@@ -25,11 +25,9 @@ export async function getServerSideProps() {
         staleTime: 0,
       }),
     ]);
-    const dateTest = new Date(Date.now()).toISOString();
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
-        dateTest,
       },
     };
   } catch (error) {
@@ -40,8 +38,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({ dehydratedState, dateTest }: any) {
-  console.log(dateTest);
+export default function Home({ dehydratedState }: { dehydratedState: DehydratedState }) {
   const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
 
   // 현재 위치를 변견하는 기능의 함수입니다.
