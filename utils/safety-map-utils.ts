@@ -41,7 +41,7 @@ export const createMarkerClusterer = (map: any, markers: any[]) => {
   const clusterer = new window.kakao.maps.MarkerClusterer({
     map: map,
     averageCenter: true,
-    minLevel: 10,
+    minLevel: 7,
     disableClickZoom: true,
   });
 
