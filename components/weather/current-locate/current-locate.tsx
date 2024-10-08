@@ -1,5 +1,4 @@
 import SnipeSVG from '@/public/images/snipe.svg';
-import { HandleLocationType } from '../weather';
 import { useGetLocalQuery } from '@/hooks/queries/local';
 
 /**
