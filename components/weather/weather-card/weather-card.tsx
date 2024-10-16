@@ -9,8 +9,7 @@ import { useState } from 'react';
  * 날씨 데이터를 시각적으로 보여주는 컴포넌트 입니다.
  */
 export default function WeatherCard({ location }: Location) {
-  const { data, isLoading } = useGetWeatherQuery(location.lat, location.lng);
-  if (isLoading) return null;
+  const { data } = useGetWeatherQuery(location.lat, location.lng);
   const { daily } = data;
   const { current } = data;
 

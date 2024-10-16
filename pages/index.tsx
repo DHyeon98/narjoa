@@ -7,7 +7,7 @@ import Weather from '@/components/weather/weather';
 import { LocationType } from '@/types/local';
 import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import Head from 'next/head';
-import { startTransition, useEffect, useState } from 'react';
+import { startTransition, Suspense, useEffect, useState } from 'react';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
@@ -65,11 +65,13 @@ export default function Home({ dehydratedState }: { dehydratedState: DehydratedS
         <title>narjoa</title>
       </Head>
       <main>
-        <Weather
-          handleSetLocation={handleSetLocation}
-          location={location}
-          handleChangeLocation={handleChangeLocation}
-        />
+        <Suspense fallback={<div>로딩중</div>}>
+          <Weather
+            handleSetLocation={handleSetLocation}
+            location={location}
+            handleChangeLocation={handleChangeLocation}
+          />
+        </Suspense>
         <SafetyCenter location={location} />
         <div className="min-h-[400px] flex-center">
           <News location={location} />

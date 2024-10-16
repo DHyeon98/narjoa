@@ -16,7 +16,7 @@ export interface weatherType {
  * 날씨 데이터를 가져오는 훅입니다.
  */
 export const useGetWeatherQuery = (lat: number, lng: number) => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['weather', lat, lng],
     queryFn: () => getWeather(lat, lng),
   });
