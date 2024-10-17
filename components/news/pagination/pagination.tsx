@@ -54,9 +54,7 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
   return (
     <div className="flex justify-center mt-4">
       <ul className="flex gap-5 items-center max-md:gap-3">
-        <li className="rotate-180">
-          <PaginationButton isDisabled={isPreviousDisabled} handleClick={handlePrevious} ariaLabel="이전 페이지" />
-        </li>
+        <PaginationButton isDisabled={isPreviousDisabled} handleClick={handlePrevious} ariaLabel="이전 페이지" />
         {pageNum.map((pageNumber) => {
           return (
             <li key={pageNumber}>
@@ -73,9 +71,7 @@ export default function Pagination({ maxPage, handleClickEvents, currentPage }: 
             </li>
           );
         })}
-        <li className="flex ">
-          <PaginationButton isDisabled={isNextDisabled} handleClick={handleNext} ariaLabel="다음 페이지" />
-        </li>
+        <PaginationButton isDisabled={isNextDisabled} handleClick={handleNext} ariaLabel="다음 페이지" />
       </ul>
     </div>
   );
