@@ -5,7 +5,8 @@ export const getLocal = async (xValue: number, yValue: number) => {
     const response = await localInstance.get(`coord2address.json?x=${xValue}&y=${yValue}`);
     const data = response.data;
     return data.documents[0].address.region_2depth_name;
-  } catch {
-    throw new Error('권외 지역 입니다.');
+  } catch (error) {
+    console.log(error);
+    // throw new Error('권외 지역 입니다.');
   }
 };

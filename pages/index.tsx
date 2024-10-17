@@ -4,30 +4,45 @@ import IntroductionLink from '@/components/introduction-link/introduction-link';
 import News from '@/components/news/news';
 import SafetyCenter from '@/components/safety-center/safety-center';
 import Weather from '@/components/weather/weather';
-import { LocationType } from '@/types/local';
+import { useLocation } from '@/hooks/use-location';
 import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import { getCookie } from 'cookies-next';
+import { NextPageContext } from 'next';
 import Head from 'next/head';
-import { startTransition, Suspense, useEffect, useState } from 'react';
 
-export async function getServerSideProps() {
+interface MainPageType {
+  dehydratedState: DehydratedState;
+  latitude: number;
+  longitude: number;
+}
+
+export async function getServerSideProps(context: NextPageContext) {
   const queryClient = new QueryClient();
+
+  // cookies-next를 사용해 쿠키에서 lat과 lng 값 가져오기
+  const lat = getCookie('lat', { req: context.req, res: context.res });
+  const lng = getCookie('lng', { req: context.req, res: context.res });
+
+  // 위도와 경도가 없을 경우 기본값 설정
+  const latitude = lat ? parseFloat(lat as string) : 37.56100278;
+  const longitude = lng ? parseFloat(lng as string) : 126.9996417;
 
   try {
     await Promise.all([
       queryClient.prefetchQuery({
-        queryKey: ['weather', 37.56100278, 126.9996417],
-        queryFn: () => getWeather(37.56100278, 126.9996417),
-        staleTime: 0,
+        queryKey: ['weather', latitude, longitude],
+        queryFn: () => getWeather(latitude, longitude),
       }),
       queryClient.prefetchQuery({
-        queryKey: ['local', 37.56100278, 126.9996417],
-        queryFn: () => getLocal(126.9996417, 37.56100278),
-        staleTime: 0,
+        queryKey: ['local', latitude, longitude],
+        queryFn: () => getLocal(longitude, latitude),
       }),
     ]);
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
+        latitude,
+        longitude,
       },
     };
   } catch (error) {
@@ -38,26 +53,8 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({ dehydratedState }: { dehydratedState: DehydratedState }) {
-  const [location, setLocation] = useState<LocationType>({ lat: 37.56100278, lng: 126.9996417 });
-
-  // 현재 위치를 변견하는 기능의 함수입니다.
-  const handleChangeLocation = (lat: number, lng: number) => {
-    startTransition(() => {
-      setLocation({ lat, lng });
-    });
-  };
-
-  // 현재 위치로 변경하는 기능의 함수입니다.
-  const handleSetLocation = () =>
-    navigator.geolocation.getCurrentPosition((position) => {
-      handleChangeLocation(position.coords.latitude, position.coords.longitude);
-    });
-
-  // 페이지가 렌더링 될 때 현재 위치를 가져오는 코드입니다.
-  useEffect(() => {
-    handleSetLocation();
-  }, []);
+export default function Home({ dehydratedState, latitude, longitude }: MainPageType) {
+  const { location, handleChangeLocation, handleSetLocation } = useLocation(latitude, longitude);
 
   return (
     <HydrationBoundary state={dehydratedState}>
@@ -65,13 +62,11 @@ export default function Home({ dehydratedState }: { dehydratedState: DehydratedS
         <title>narjoa</title>
       </Head>
       <main>
-        <Suspense fallback={<div>로딩중</div>}>
-          <Weather
-            handleSetLocation={handleSetLocation}
-            location={location}
-            handleChangeLocation={handleChangeLocation}
-          />
-        </Suspense>
+        <Weather
+          handleSetLocation={handleSetLocation}
+          location={location}
+          handleChangeLocation={handleChangeLocation}
+        />
         <SafetyCenter location={location} />
         <div className="min-h-[400px] flex-center">
           <News location={location} />
